@@ -221,10 +221,11 @@
       }
     },
     "io.realm.unity": {
-      "version": "file:C:/Users/gjewc/OneDrive/Desktop/Capstone/Keepie_Uppies/io.realm.unity-10.8.0.tgz",
+      "version": "10.2.1",
       "depth": 0,
-      "source": "local-tarball",
-      "dependencies": {}
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://registry.npmjs.org"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
