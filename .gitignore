@@ -58,3 +58,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+#Zipped Files
+*.7z
+*.zip
+*.rar
+
