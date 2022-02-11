@@ -221,7 +221,7 @@
       }
     },
     "io.realm.unity": {
-      "version": "10.2.1",
+      "version": "10.8.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {},

@@ -48,7 +48,7 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0",
-    "io.realm.unity": "10.2.1"
+    "io.realm.unity": "10.8.0"
   },
   "scopedRegistries": [
     {
