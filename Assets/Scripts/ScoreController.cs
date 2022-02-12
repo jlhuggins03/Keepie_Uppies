@@ -53,6 +53,7 @@ public class ScoreController : MonoBehaviour
 
     public void GetReward() {
         reward++;
+        Debug.Log(reward);
         currentRewardText.text = "REWARDS: " + reward.ToString();
     }
 }
