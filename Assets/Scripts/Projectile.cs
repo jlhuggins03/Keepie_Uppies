@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
             startPosition = "right";
         }
 
-        transform.position = new Vector3(_fixedPositionX[randomPositionX], randomPositionY, 0);
+        transform.position = new Vector3(_fixedPositionX[randomPositionX], randomPositionY, -1.0f);
     }
 
     // Update is called once per frame

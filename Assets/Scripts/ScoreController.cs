@@ -54,6 +54,6 @@ public class ScoreController : MonoBehaviour
     public void GetReward() {
         reward++;
         Debug.Log(reward);
-        currentRewardText.text = "REWARDS: " + reward.ToString();
+        currentRewardText.text = "x " + reward.ToString(); // functions as a multiplier
     }
 }

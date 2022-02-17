@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     {
         RestartButton.SetActive(false);
 
-        targetJump = transform.position.x + jumpHeight; // Initialize tartgetJump position.
+        targetJump = transform.position.y + jumpHeight; // Initialize tartgetJump position.
 
         dragDistance = Screen.height * 10 / 100; //dragDistance is 10% height of the screen
 
@@ -82,16 +82,18 @@ public class Player : MonoBehaviour
             }
             else if (touch.phase == TouchPhase.Ended) //check if the finger is removed from the screen
             {
-                lp = touch.position;  //last touch position. Ommitted if you use list
+                lp = touch.position; //last touch position. Ommitted if you use list
  
-                //Check if drag distance is greater than 20% of the screen height
-                if (Mathf.Abs(lp.x - fp.x) > dragDistance) // y: || Mathf.Abs(lp.y - fp.y) > dragDistance
-                {//It's a drag
-                 //check if the drag is vertical or horizontal
+                //Check if drag distance is greater than 10% of the screen height
+                if (Mathf.Abs(lp.x - fp.x) > dragDistance || Mathf.Abs(lp.y - fp.y) > dragDistance) //It's a drag
+                {
+                    //check if the drag is vertical or horizontal
                     if (Mathf.Abs(lp.x - fp.x) > Mathf.Abs(lp.y - fp.y))
-                    {   //If the horizontal movement is greater than the vertical movement...
-                        if ((lp.x > fp.x))  //If the movement was to the right)
-                        {   //Right swipe
+                    {   
+                        //If the horizontal movement is greater than the vertical movement...
+                        if ((lp.x > fp.x)) // If the movement was to the right
+                        {   
+                            //Right swipe
                             Debug.Log("Right Swipe");
                             if (isSwappingLanes == false && targetLane < lanes.Length - 1.0)
                             {
@@ -100,7 +102,8 @@ public class Player : MonoBehaviour
                             }
                         }
                         else
-                        {   //Left swipe
+                        {   
+                            //Left swipe
                             Debug.Log("Left Swipe");
                             if (isSwappingLanes == false && targetLane > 0)
                             {
@@ -109,60 +112,51 @@ public class Player : MonoBehaviour
                             }
                         }
                     }
-                    // else
-                    // {   //the vertical movement is greater than the horizontal movement
-                    //     if (lp.y > fp.y)  //If the movement was up
-                    //     {   //Up swipe
-                    //         Debug.Log("Up Swipe");
-                    //     }
-                    //     else
-                    //     {   //Down swipe
-                    //         Debug.Log("Down Swipe");
-                    //     }
-                    // }
-                }
-                else
-                {   //It's a tap as the drag distance is less than 20% of the screen height
-                    Debug.Log("Tap");
-                    if (isJumping == false && transform.position.y <= skyZone)
-                    {
-                        targetJump = transform.position.y + jumpHeight;
-                        isJumping = true;
+                    else //the vertical movement is greater than the horizontal movement
+                    {   
+                        if (lp.y > fp.y) //If the movement was up
+                        {   
+                            //Up swipe
+                            Debug.Log("Up Swipe");
+                            targetJump = transform.position.y + jumpHeight;
+                            isJumping = false;
+                        }
+                        else
+                        {   
+                            //Down swipe
+                            Debug.Log("Down Swipe");
+                            targetJump = transform.position.y - jumpHeight;
+                            isJumping = false;
+                        }
                     }
                 }
+                // else
+                // {   //It's a tap as the drag distance is less than 20% of the screen height
+                //     Debug.Log("Tap");
+                //     if (isJumping == false && transform.position.y <= skyZone)
+                //     {
+                //         targetJump = transform.position.y + jumpHeight;
+                //         isJumping = true;
+                //     }
+                // }
             }
         }
 
-        /* Receive user input */
-        // Upwards
-        // if (isJumping == false && Input.GetKeyDown(KeyCode.UpArrow) && transform.position.y <= skyZone)
-        // {
-        //     targetJump = transform.position.y + jumpHeight;
-        //     isJumping = true;
-        // }
-        // Leftwards
-        // else if (isSwappingLanes == false && Input.GetKeyDown(KeyCode.LeftArrow) && targetLane > 0)
-        // {
-        //     targetLane--;
-        //     isSwappingLanes = false;
-        // }
-        // Rightwards
-        // else if (isSwappingLanes == false && Input.GetKeyDown(KeyCode.RightArrow) && targetLane < lanes.Length - 1.0)
-        // {
-        //     targetLane++;
-        //     isSwappingLanes = false;
-        // }
-
         /* Vertical movement */
+        // Gravity affecting player
+        // else
+        // {
+        //     transform.position += Vector3.down * gravity * Time.deltaTime; // if isJumping = false?
+        // }
         // Player hitting the floor
         if (transform.position.y <= deadZone)
         {
             EndGame();
         }
-        // Gravity affecting player
-        else
+        // Player past max jumping height
+        if (transform.position.y >= skyZone)
         {
-            transform.position += Vector3.down * gravity * Time.deltaTime; // if isJumping = false?
+            isJumping = false;
         }
         // Move player towards the target jump's position
         if (isJumping == true && Mathf.Abs(transform.position.y - targetJump) > 0.05f)
@@ -170,7 +164,7 @@ public class Player : MonoBehaviour
             transform.position += Vector3.up * jumpSpeed * Time.deltaTime;
         }
         // When close enough to the final vertical position, snap to it
-        else
+        else if (isJumping == true && Mathf.Abs(transform.position.y - targetJump) <= 0.05f)
         {
             transform.position = Vector3.Lerp(transform.position, new Vector3(lanes[targetLane], targetJump, 0), Time.deltaTime); // may need to say the targetlane as well.
             isJumping = false;
@@ -190,7 +184,7 @@ public class Player : MonoBehaviour
             }
         }
         // When close enough to the final horizontal position, snap to it
-        else
+        else if (isSwappingLanes == true && Mathf.Abs(transform.position.x - lanes[targetLane]) <= 0.05f)
         {
             transform.position = Vector3.Lerp(transform.position, new Vector3(lanes[targetLane], transform.position.y, 0), Time.deltaTime); // causes a slight player movement downward cause its on position y not targetjump...
             isSwappingLanes = false;

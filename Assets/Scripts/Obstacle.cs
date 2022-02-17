@@ -13,14 +13,14 @@ public class Obstacle : MonoBehaviour
     void OnEnable()
     {
         int randomPositionX = Random.Range(0, 3);
-        transform.position = new Vector3(_fixedPositionX[randomPositionX], 7.0f, 0.0f);
+        transform.position = new Vector3(_fixedPositionX[randomPositionX], 10.0f, -1.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position += Vector3.down * movementSpeed * Time.deltaTime;
-        if (transform.position.y <= -7.0f) {
+        if (transform.position.y <= -10.0f) {
             gameObject.SetActive(false);
         }
     }
