@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     private bool isSwappingLanes = false;
     private bool isJumping = false;
 
-    private float skyZone = 3.5f;
+    private float skyZone = 4f;
     private float deadZone = -4f;
 
     private Vector3 fp;   //First touch position
@@ -87,6 +87,7 @@ public class Player : MonoBehaviour
                 //Check if drag distance is greater than 10% of the screen height
                 if (Mathf.Abs(lp.x - fp.x) > dragDistance || Mathf.Abs(lp.y - fp.y) > dragDistance) //It's a drag
                 {
+                    Debug.Log("Drag registered");
                     //check if the drag is vertical or horizontal
                     if (Mathf.Abs(lp.x - fp.x) > Mathf.Abs(lp.y - fp.y))
                     {   
@@ -98,7 +99,7 @@ public class Player : MonoBehaviour
                             if (isSwappingLanes == false && targetLane < lanes.Length - 1.0)
                             {
                                 targetLane++;
-                                isSwappingLanes = false;
+                                isSwappingLanes = true;
                             }
                         }
                         else
@@ -108,7 +109,7 @@ public class Player : MonoBehaviour
                             if (isSwappingLanes == false && targetLane > 0)
                             {
                                 targetLane--;
-                                isSwappingLanes = false;
+                                isSwappingLanes = true;
                             }
                         }
                     }
@@ -119,14 +120,14 @@ public class Player : MonoBehaviour
                             //Up swipe
                             Debug.Log("Up Swipe");
                             targetJump = transform.position.y + jumpHeight;
-                            isJumping = false;
+                            isJumping = true;
                         }
                         else
                         {   
                             //Down swipe
                             Debug.Log("Down Swipe");
                             targetJump = transform.position.y - jumpHeight;
-                            isJumping = false;
+                            isJumping = true;
                         }
                     }
                 }
