@@ -9,19 +9,24 @@ public class Projectile : MonoBehaviour
     // private float[] _fixedPositionY = new float[] {-4.5f, 0.0f, 4.5f};
     private float[] _fixedPositionX = new float[] {-3, 3};
     private string startPosition;
+    private SpriteRenderer projectile;
 
     // Start is called before the first frame update
     void OnEnable()
     {
+        projectile = GetComponent<SpriteRenderer>();
         int randomPositionX = Random.Range(0, 2); // only range with float is maximally inclusive, int is not.
         float randomPositionY = Random.Range(-4.5f, 4.5f);
+
         if (_fixedPositionX[randomPositionX] == -3) {
             startPosition = "left";
+            projectile.flipX = true;
         } else {
             startPosition = "right";
+            projectile.flipX = false;
         }
 
-        transform.position = new Vector3(_fixedPositionX[randomPositionX], randomPositionY, 0);
+        transform.position = new Vector3(_fixedPositionX[randomPositionX], randomPositionY, -1.0f);
     }
 
     // Update is called once per frame
@@ -40,3 +45,5 @@ public class Projectile : MonoBehaviour
         }
     }
 }
+
+// SpriteRenderer.FlipX

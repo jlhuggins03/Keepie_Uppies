@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuScene : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
     public void PlayGame(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -15,7 +15,9 @@ public class MainMenuScene : MonoBehaviour
         Application.Quit();
     }
 
-
+    public void ReturntoMenu() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
 
 }
 
