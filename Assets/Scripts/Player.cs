@@ -78,6 +78,14 @@ public class Player : MonoBehaviour
         }
 
         /* Vertical movement */
+<<<<<<< Updated upstream
+=======
+        // Gravity affecting player
+        else
+        {
+            transform.position += Vector3.down * gravity * Time.deltaTime; // if isJumping = false?
+        }
+>>>>>>> Stashed changes
         // Player hitting the floor
         if (transform.position.y <= deadZone)
         {
