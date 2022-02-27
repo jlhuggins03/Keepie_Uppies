@@ -34,6 +34,8 @@ public class Player : MonoBehaviour
     private float dragDistance;  //minimum distance for a swipe to be registered
 
     public GameObject GameOverScene;
+    public GameObject ScoreUI;
+    public GameObject PauseButtonUI;
 
     // Allows Sprite to have multiple colliders
     [SerializeField]
@@ -52,6 +54,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         GameOverScene.SetActive(false);
+        PauseButtonUI.SetActive(true);
+        ScoreUI.SetActive(true);
 
         targetJump = transform.position.y + jumpHeight; // Initialize tartgetJump position.
 
@@ -230,6 +234,8 @@ public class Player : MonoBehaviour
         score.SetHighScore();
         Time.timeScale = 0f;
         GameOverScene.SetActive(true);
+        PauseButtonUI.SetActive(false);
+        ScoreUI.SetActive(false);
     }
 
     public void RestartScene()
