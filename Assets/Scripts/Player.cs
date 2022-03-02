@@ -33,7 +33,15 @@ public class Player : MonoBehaviour
     private Vector3 lp;   //Last touch position
     private float dragDistance;  //minimum distance for a swipe to be registered
 
-    public GameObject RestartButton;
+    public GameObject GameOverScene;
+    public GameObject ScoreUI;
+    public GameObject PauseButtonUI;
+
+    // Allows Sprite to have multiple colliders
+    [SerializeField]
+    private PolygonCollider2D[] colliders;
+    private int currentColliderIndex = 0;
+
  
 
     // void Awake()
@@ -45,7 +53,9 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RestartButton.SetActive(false);
+        GameOverScene.SetActive(false);
+        PauseButtonUI.SetActive(true);
+        ScoreUI.SetActive(true);
 
         targetJump = transform.position.y + jumpHeight; // Initialize tartgetJump position.
 
@@ -145,10 +155,10 @@ public class Player : MonoBehaviour
 
         /* Vertical movement */
         // Gravity affecting player
-        // else
-        // {
-        //     transform.position += Vector3.down * gravity * Time.deltaTime; // if isJumping = false?
-        // }
+        else
+        {
+            transform.position += Vector3.down * gravity * Time.deltaTime; // if isJumping = false?
+        }
         // Player hitting the floor
         if (transform.position.y <= deadZone)
         {
@@ -222,11 +232,26 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Game Over!");
         score.SetHighScore();
-        RestartButton.SetActive(true);
+        Time.timeScale = 0f;
+        GameOverScene.SetActive(true);
+        PauseButtonUI.SetActive(false);
+        ScoreUI.SetActive(false);
     }
 
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
     }
+
+    //Collision Animation Marker
+    public void SetColliderForSprite( int spriteNum )
+    {
+        colliders[currentColliderIndex].enabled = false;
+        currentColliderIndex = spriteNum;
+        colliders[currentColliderIndex].enabled = true;
+    }
+
+
+
 }
