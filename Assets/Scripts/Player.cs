@@ -12,10 +12,14 @@ public class Player : MonoBehaviour
     // public AudioSource audioSource;
 
     public ScoreController score;
+    public AudioSource playOnTrigger;
+
+    public static GameObject playerinstance;
 
     public float[] lanes = new float[] { -3f, 0f, 3f }; // x position of each lane... for some reason im exceeding world bounds for it to work properly??
     private int targetLane = 1; // middle lane
 
+    public float superJumpMultiplier;
     public float gravity = 2f;
     private float jumpHeight = 1f;
     private float targetJump = 0f;
@@ -56,6 +60,7 @@ public class Player : MonoBehaviour
         GameOverScene.SetActive(false);
         PauseButtonUI.SetActive(true);
         ScoreUI.SetActive(true);
+        //Time.timeScale = 1f;
 
         targetJump = transform.position.y + jumpHeight; // Initialize tartgetJump position.
 
@@ -110,6 +115,7 @@ public class Player : MonoBehaviour
                             {
                                 targetLane++;
                                 isSwappingLanes = true;
+                                AudioManager_Game.me.playPlayerMoveSFX();
                             }
                         }
                         else
@@ -120,6 +126,7 @@ public class Player : MonoBehaviour
                             {
                                 targetLane--;
                                 isSwappingLanes = true;
+                                AudioManager_Game.me.playPlayerMoveSFX();
                             }
                         }
                     }
@@ -129,14 +136,16 @@ public class Player : MonoBehaviour
                         {   
                             //Up swipe
                             Debug.Log("Up Swipe");
-                            targetJump = transform.position.y + jumpHeight;
-                            isJumping = true;
+                            targetJump = transform.position.y + jumpHeight; //set jump result location
+                            isJumping = true; //do the jump
+                            AudioManager_Game.me.playPlayerMoveSFX(); // play the jump sound
+
                         }
                         else
                         {   
                             //Down swipe
                             Debug.Log("Down Swipe");
-                            targetJump = transform.position.y - jumpHeight;
+                            targetJump = transform.position.y + (superJumpMultiplier * jumpHeight);
                             isJumping = true;
                         }
                     }
@@ -216,21 +225,31 @@ public class Player : MonoBehaviour
     {
         if (collider.gameObject.tag == "Obstacle" || collider.gameObject.tag == "Projectile")
         {
+            AudioManager_Game.me.playObstacleHitSFX();
             EndGame();
         }
         else if (collider.gameObject.tag == "Reward")
         {
             // sound.OnCollisionReward();
             // audioSource.PlayOneShot(collectReward, 1.0F); // cant hear it?
+            AudioManager_Game.me.playRewardSFX();
             score.GetReward();
             Debug.Log("Reward Collected!");
+        }
+        else if (collider.gameObject.tag == "Big Reward")
+        {
+            // sound.OnCollisionReward();
+            // audioSource.PlayOneShot(collectReward, 1.0F); // cant hear it?
+            AudioManager_Game.me.playRewardSFX();
+            score.GetReward();
+            Debug.Log("Big Reward Collected!");
         }
     }
     
     /* Resolve game over */
     void EndGame()
     {
-        Debug.Log("Game Over!");
+        //Debug.Log("Game Over!");
         score.SetHighScore();
         Time.timeScale = 0f;
         GameOverScene.SetActive(true);
@@ -241,7 +260,7 @@ public class Player : MonoBehaviour
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1f;
+        
     }
 
     //Collision Animation Marker
