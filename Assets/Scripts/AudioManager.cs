@@ -213,7 +213,7 @@ public class AudioManager : MonoBehaviour
 
         sfxList.Add(sound); //add sound AudioSource to the list
         sound.volume = sFXSlider.value; //setting the volume according to slider
-        sound.Play();
+        sound.Play();//plays the sound
     }
 
     //Music Pause Function
