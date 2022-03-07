@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     public float movementSpeed;
 
-    // private float[] _fixedPositionY = new float[] {-4.5f, 0.0f, 4.5f};
+    // private float[] _fixedPositionY = new float[] {-4.5f, 0.0f, 4.5f}; // is this necessary?
     private float[] _fixedPositionX = new float[] {-3, 3};
     private string startPosition;
     private SpriteRenderer projectile;
@@ -24,8 +24,6 @@ public class Projectile : MonoBehaviour
         projectile = GetComponent<SpriteRenderer>();
         int randomPositionX = Random.Range(0, 2); // only range with float is maximally inclusive, int is not.
         float randomPositionY = Random.Range(-4.5f, 4.5f);
-
-        AudioManager_Game.me.playObstacleSpawnSFX();// play audio upon object spawn
 
         if (_fixedPositionX[randomPositionX] == -3) {
             startPosition = "left";
@@ -65,5 +63,3 @@ public class Projectile : MonoBehaviour
     }
 
 }
-
-// SpriteRenderer.FlipX

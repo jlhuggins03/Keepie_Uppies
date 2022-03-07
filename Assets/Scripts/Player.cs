@@ -46,36 +46,16 @@ public class Player : MonoBehaviour
     private PolygonCollider2D[] colliders;
     private int currentColliderIndex = 0;
 
- 
-
-    // void Awake()
-    // {
-    //     transform.position = new Vector3(0, 0, 0);
-    //     Debug.Log(rows[targetRow]);
-    // }
-
     // Start is called before the first frame update
     void Start()
     {
         GameOverScene.SetActive(false);
         PauseButtonUI.SetActive(true);
         ScoreUI.SetActive(true);
-        //Time.timeScale = 1f;
 
         targetJump = transform.position.y + jumpHeight; // Initialize tartgetJump position.
 
         dragDistance = Screen.height * 10 / 100; //dragDistance is 10% height of the screen
-
-        // sound isnt working as intended currently...
-        // audioSource = GetComponent<AudioSource>();
-        // if (audioSource == null)
-        // {
-        //     Debug.Log("The AudioSource in the player is NULL!");
-        // }
-        // else
-        // {
-        //     audioSource.clip = collectReward;
-        // }
     }
 
     // Update is called once per frame
@@ -115,7 +95,7 @@ public class Player : MonoBehaviour
                             {
                                 targetLane++;
                                 isSwappingLanes = true;
-                                AudioManager_Game.me.playPlayerMoveSFX();
+                                AudioManager.me.playPlayerMoveSFX();
                             }
                         }
                         else
@@ -126,7 +106,7 @@ public class Player : MonoBehaviour
                             {
                                 targetLane--;
                                 isSwappingLanes = true;
-                                AudioManager_Game.me.playPlayerMoveSFX();
+                                AudioManager.me.playPlayerMoveSFX();
                             }
                         }
                     }
@@ -138,7 +118,7 @@ public class Player : MonoBehaviour
                             Debug.Log("Up Swipe");
                             targetJump = transform.position.y + jumpHeight; //set jump result location
                             isJumping = true; //do the jump
-                            AudioManager_Game.me.playPlayerMoveSFX(); // play the jump sound
+                            AudioManager.me.playPlayerMoveSFX(); // play the jump sound
 
                         }
                         else
@@ -159,6 +139,8 @@ public class Player : MonoBehaviour
                 //         isJumping = true;
                 //     }
                 // }
+
+                // Did this Ever Work?
             }
         }
 
@@ -209,15 +191,6 @@ public class Player : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, new Vector3(lanes[targetLane], transform.position.y, 0), Time.deltaTime); // causes a slight player movement downward cause its on position y not targetjump...
             isSwappingLanes = false;
         }
-
-        // // if restartbutton clicked do this...
-        // if (RestartButton.activeSelf)
-        // {
-        //     Debug.Log("OWOWOWOW");
-            
-        //     RestartButton.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
-        //     // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // replace later...
-        // }
     }
 
     /* Player collision */
@@ -225,14 +198,14 @@ public class Player : MonoBehaviour
     {
         if (collider.gameObject.tag == "Obstacle" || collider.gameObject.tag == "Projectile")
         {
-            AudioManager_Game.me.playObstacleHitSFX();
+            AudioManager.me.playObstacleHitSFX();
             EndGame();
         }
         else if (collider.gameObject.tag == "Reward")
         {
             // sound.OnCollisionReward();
             // audioSource.PlayOneShot(collectReward, 1.0F); // cant hear it?
-            AudioManager_Game.me.playRewardSFX();
+            AudioManager.me.playRewardSFX();
             score.GetReward();
             Debug.Log("Reward Collected!");
         }
@@ -240,7 +213,7 @@ public class Player : MonoBehaviour
         {
             // sound.OnCollisionReward();
             // audioSource.PlayOneShot(collectReward, 1.0F); // cant hear it?
-            AudioManager_Game.me.playRewardSFX();
+            AudioManager.me.playRewardSFX();
             score.GetReward();
             Debug.Log("Big Reward Collected!");
         }
@@ -255,6 +228,7 @@ public class Player : MonoBehaviour
         GameOverScene.SetActive(true);
         PauseButtonUI.SetActive(false);
         ScoreUI.SetActive(false);
+        AudioManager.me.pauseGameMusic();
     }
 
     public void RestartScene()
@@ -270,7 +244,4 @@ public class Player : MonoBehaviour
         currentColliderIndex = spriteNum;
         colliders[currentColliderIndex].enabled = true;
     }
-
-
-
 }

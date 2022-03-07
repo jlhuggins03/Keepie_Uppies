@@ -6,7 +6,6 @@ public class Reward : MonoBehaviour
 {
     public float movementSpeed;
     public AudioSource playSound;
-    //public GameObject playSoundGameObject;
 
     private float[] _fixedPositionX = new float[] {-1.4f, 0.0f, 1.4f};
 
@@ -14,12 +13,6 @@ public class Reward : MonoBehaviour
     [SerializeField]
     private PolygonCollider2D[] colliders;
     private int currentColliderIndex = 0;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-            
-    }
 
     void OnEnable()
     {

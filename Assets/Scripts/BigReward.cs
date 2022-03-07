@@ -19,21 +19,11 @@ public class BigReward : MonoBehaviour
     private PolygonCollider2D[] colliders;
     private int currentColliderIndex = 0;
 
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-            
-    }
-
     void OnEnable()
     {
        bigReward = GetComponent<SpriteRenderer>();
         int randomPositionX = Random.Range(0, 2); // only range with float is maximally inclusive, int is not.
         float randomPositionY = Random.Range(-4.5f, 4.5f);
-        //AudioManager_Game.me.playObstacleSpawnSFX();
 
         if (_fixedPositionX[randomPositionX] == -3) {
             startPosition = "left";
