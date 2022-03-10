@@ -201,14 +201,10 @@ public class Player : MonoBehaviour
             isSwappingLanes = false;
         }
 
-        // // if restartbutton clicked do this...
-        // if (RestartButton.activeSelf)
-        // {
-        //     Debug.Log("OWOWOWOW");
-            
-        //     RestartButton.onClick.AddListener(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
-        //     // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // replace later...
-        // }
+        // No lives remaining
+        if (score.food == 0) {
+            EndGame();
+        }
     }
 
     /* Player collision */
@@ -221,9 +217,11 @@ public class Player : MonoBehaviour
         else if (collider.gameObject.tag == "Reward")
         {
             // sound.OnCollisionReward();
-            // audioSource.PlayOneShot(collectReward, 1.0F); // cant hear it?
-            score.GetReward();
-            Debug.Log("Reward Collected!");
+            // audioSource.PlayOneShot(collectReward, 1.0F); // cant hear it?\
+
+            Debug.Log("Food Collected!");
+            score.GetFood();
+            // add health ui things
         }
     }
     
@@ -245,13 +243,10 @@ public class Player : MonoBehaviour
     }
 
     //Collision Animation Marker
-    public void SetColliderForSprite( int spriteNum )
+    public void SetColliderForSprite(int spriteNum)
     {
         colliders[currentColliderIndex].enabled = false;
         currentColliderIndex = spriteNum;
         colliders[currentColliderIndex].enabled = true;
     }
-
-
-
 }
