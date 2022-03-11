@@ -12,10 +12,14 @@ public class Player : MonoBehaviour
     // public AudioSource audioSource;
 
     public ScoreController score;
+    public AudioSource playOnTrigger;
+
+    public static GameObject playerinstance;
 
     public float[] lanes = new float[] { -3f, 0f, 3f }; // x position of each lane... for some reason im exceeding world bounds for it to work properly??
     private int targetLane = 1; // middle lane
 
+    public float superJumpMultiplier;
     public float gravity = 2f;
     private float jumpHeight = 1f;
     private float targetJump = 0f;
@@ -42,14 +46,6 @@ public class Player : MonoBehaviour
     private PolygonCollider2D[] colliders;
     private int currentColliderIndex = 0;
 
- 
-
-    // void Awake()
-    // {
-    //     transform.position = new Vector3(0, 0, 0);
-    //     Debug.Log(rows[targetRow]);
-    // }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -60,17 +56,6 @@ public class Player : MonoBehaviour
         targetJump = transform.position.y + jumpHeight; // Initialize tartgetJump position.
 
         dragDistance = Screen.height * 10 / 100; //dragDistance is 10% height of the screen
-
-        // sound isnt working as intended currently...
-        // audioSource = GetComponent<AudioSource>();
-        // if (audioSource == null)
-        // {
-        //     Debug.Log("The AudioSource in the player is NULL!");
-        // }
-        // else
-        // {
-        //     audioSource.clip = collectReward;
-        // }
     }
 
     // Update is called once per frame
@@ -110,6 +95,7 @@ public class Player : MonoBehaviour
                             {
                                 targetLane++;
                                 isSwappingLanes = true;
+                                AudioManager.me.playPlayerMoveSFX();
                             }
                         }
                         else
@@ -120,6 +106,7 @@ public class Player : MonoBehaviour
                             {
                                 targetLane--;
                                 isSwappingLanes = true;
+                                AudioManager.me.playPlayerMoveSFX();
                             }
                         }
                     }
@@ -129,14 +116,16 @@ public class Player : MonoBehaviour
                         {   
                             //Up swipe
                             Debug.Log("Up Swipe");
-                            targetJump = transform.position.y + jumpHeight;
-                            isJumping = true;
+                            targetJump = transform.position.y + jumpHeight; //set jump result location
+                            isJumping = true; //do the jump
+                            AudioManager.me.playPlayerMoveSFX(); // play the jump sound
+
                         }
                         else
                         {   
                             //Down swipe
                             Debug.Log("Down Swipe");
-                            targetJump = transform.position.y - jumpHeight;
+                            targetJump = transform.position.y + (superJumpMultiplier * jumpHeight);
                             isJumping = true;
                         }
                     }
@@ -150,6 +139,8 @@ public class Player : MonoBehaviour
                 //         isJumping = true;
                 //     }
                 // }
+
+                // Did this Ever Work?
             }
         }
 
@@ -212,34 +203,44 @@ public class Player : MonoBehaviour
     {
         if (collider.gameObject.tag == "Obstacle" || collider.gameObject.tag == "Projectile")
         {
+            AudioManager.me.playObstacleHitSFX();
             EndGame();
         }
         else if (collider.gameObject.tag == "Reward")
         {
-            // sound.OnCollisionReward();
-            // audioSource.PlayOneShot(collectReward, 1.0F); // cant hear it?\
-
             Debug.Log("Food Collected!");
+            AudioManager.me.playRewardSFX();
             score.GetFood();
+
             // add health ui things
+
+            // score.GetReward();
+            // Debug.Log("Reward Collected!");
+        }
+        else if (collider.gameObject.tag == "Big Reward")
+        {
+            Debug.Log("Big Reward Collected!");
+            AudioManager.me.playRewardSFX();
+            score.GetFood();
         }
     }
     
     /* Resolve game over */
     void EndGame()
     {
-        Debug.Log("Game Over!");
+        //Debug.Log("Game Over!");
         score.SetHighScore();
         Time.timeScale = 0f;
         GameOverScene.SetActive(true);
         PauseButtonUI.SetActive(false);
         ScoreUI.SetActive(false);
+        AudioManager.me.pauseGameMusic();
     }
 
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1f;
+        
     }
 
     //Collision Animation Marker

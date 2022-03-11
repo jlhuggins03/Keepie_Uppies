@@ -1,13 +1,7 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Materials/frontSea_layer 1.mat.meta
-guid: 4b1141c0fde50c44ea108517d292c9ae
-NativeFormatImporter:
-=======
-guid: bc3379fa19397cc4c873939436b16d99
+guid: f824f4563647d314d9fd92f878dd69c8
 DefaultImporter:
->>>>>>> josh's_branch:Assets/Scenes/MainMenuScene.unity.meta
   externalObjects: {}
-  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
