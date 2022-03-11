@@ -1783,7 +1783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &132313772
 Transform:
   m_ObjectHideFlags: 0
@@ -13082,8 +13082,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2731b639b97da3742b0bf633125244f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testObject: {fileID: 0}
-  testObject2: {fileID: 0}
   backGroundTheme:
   - {fileID: 132313771}
   - {fileID: 1512507984}
@@ -14367,7 +14365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1492318960
 RectTransform:
   m_ObjectHideFlags: 0
