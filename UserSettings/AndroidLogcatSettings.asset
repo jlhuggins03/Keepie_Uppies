@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "18311FDF600DJW",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 14568,
+        "processId": 23927,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -18,6 +18,12 @@
             "deviceId": "18311FDF600DJW",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 14568,
+            "exited": false
+        },
+        {
+            "deviceId": "18311FDF600DJW",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 23927,
             "exited": false
         }
     ],
