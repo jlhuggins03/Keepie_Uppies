@@ -6,16 +6,16 @@ using Realms;
 
 public class ScoreController : MonoBehaviour
 {
+    public Text highScoreText;
     public Text scoreText;
-    private float scoreValue;
+    public Text scoreRetainer;
     public int food; // functions as health (Reward)
+    
+    private int scoreValue;
     private float timer;
-
-    // multiplier...
 
     private PlayerStats _playerStats;
     private Realm _realm;
-    // private int reward;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +27,12 @@ public class ScoreController : MonoBehaviour
                 _playerStats = _realm.Add(new PlayerStats("player", 0));
             });
         }
-        // highScoreText.text = "HIGH SCORE: " + _playerStats.Score.ToString();
-        // reward = 0;
+        highScoreText.text = _playerStats.Score.ToString();
+
+        if (food == 0) 
+        {
+            scoreValue = int.Parse(scoreRetainer.text);
+        }
     }
 
     void OnDisable() {
@@ -48,12 +52,11 @@ public class ScoreController : MonoBehaviour
     }
 
     public void SetHighScore() {
-        float snapshotScore = Mathf.Floor(Time.timeSinceLevelLoad);
-        if (snapshotScore > _playerStats.Score) {
+        if (scoreValue > _playerStats.Score) {
             _realm.Write(() => {
-                _playerStats.Score = (int)snapshotScore;
+                _playerStats.Score = scoreValue;
             });
-            // highScoreText.text = "HIGH SCORE: " + snapshotScore;
+            highScoreText.text = scoreValue.ToString();
         }
     }
 

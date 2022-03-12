@@ -39,21 +39,31 @@ public class Reward : MonoBehaviour
             gameObject.SetActive(false);          
             
         }
-        // Prevents overlapping reward and obstacle
         else if (collider.gameObject.tag == "Obstacle")
         {
-            if (transform.position.x == -1.4f)
-            {
-                transform.position += Vector3.zero;
-            }
-            else if (transform.position.x == 0f)
-            {
-                transform.position += Vector3.right * 1.4f;
-            }
-            else
-            {
-                transform.position += Vector3.left * 1.4f;
-            }
+            gameObject.SetActive(false);
+
+            // Prevents overlapping reward and obstacle
+            // if (transform.position.x == -1.4f)
+            // {
+            //     transform.position += Vector3.zero;
+            // }
+            // else if (transform.position.x == 0f)
+            // {
+            //     transform.position += Vector3.right * 1.4f;
+            // }
+            // else
+            // {
+            //     transform.position += Vector3.left * 1.4f;
+            // }
+        }
+        else if (collider.gameObject.tag == "Projectile")
+        {
+            gameObject.SetActive(false);
+        }
+        else if (collider.gameObject.tag == "Big Reward")
+        {
+            gameObject.SetActive(false);
         }
     }
 

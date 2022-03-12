@@ -228,7 +228,7 @@ public class Player : MonoBehaviour
     /* Resolve game over */
     void EndGame()
     {
-        //Debug.Log("Game Over!");
+        Debug.Log("Game Over!");
         score.SetHighScore();
         Time.timeScale = 0f;
         GameOverScene.SetActive(true);
