@@ -8180,9 +8180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd43c343b5d66f4180cfffdf3d34692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highScoreText: {fileID: 1562094387}
-  currentScoreText: {fileID: 1833241691}
-  currentRewardText: {fileID: 41065390}
+  scoreText: {fileID: 1833241691}
+  food: 3
 --- !u!4 &874219064
 Transform:
   m_ObjectHideFlags: 0
@@ -14520,7 +14519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512507984}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 713.7158, y: 2261.2227, z: -2094.9153}
+  m_LocalPosition: {x: 713.6, y: 2261.2227, z: -2094.9153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 730733163}
