@@ -191,6 +191,11 @@ public class Player : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, new Vector3(lanes[targetLane], transform.position.y, 0), Time.deltaTime); // causes a slight player movement downward cause its on position y not targetjump...
             isSwappingLanes = false;
         }
+
+        // No lives remaining
+        if (score.food == 0) {
+            EndGame();
+        }
     }
 
     /* Player collision */
@@ -203,26 +208,27 @@ public class Player : MonoBehaviour
         }
         else if (collider.gameObject.tag == "Reward")
         {
-            // sound.OnCollisionReward();
-            // audioSource.PlayOneShot(collectReward, 1.0F); // cant hear it?
+            Debug.Log("Food Collected!");
             AudioManager.me.playRewardSFX();
-            score.GetReward();
-            Debug.Log("Reward Collected!");
+            score.GetFood();
+
+            // add health ui things
+
+            // score.GetReward();
+            // Debug.Log("Reward Collected!");
         }
         else if (collider.gameObject.tag == "Big Reward")
         {
-            // sound.OnCollisionReward();
-            // audioSource.PlayOneShot(collectReward, 1.0F); // cant hear it?
-            AudioManager.me.playRewardSFX();
-            score.GetReward();
             Debug.Log("Big Reward Collected!");
+            AudioManager.me.playRewardSFX();
+            score.GetFood();
         }
     }
     
     /* Resolve game over */
     void EndGame()
     {
-        //Debug.Log("Game Over!");
+        Debug.Log("Game Over!");
         score.SetHighScore();
         Time.timeScale = 0f;
         GameOverScene.SetActive(true);
@@ -238,7 +244,7 @@ public class Player : MonoBehaviour
     }
 
     //Collision Animation Marker
-    public void SetColliderForSprite( int spriteNum )
+    public void SetColliderForSprite(int spriteNum)
     {
         colliders[currentColliderIndex].enabled = false;
         currentColliderIndex = spriteNum;

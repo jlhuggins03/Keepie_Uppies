@@ -6,16 +6,16 @@ using Realms;
 
 public class ScoreController : MonoBehaviour
 {
-
     public Text highScoreText;
-    public Text currentScoreText;
-    public Text currentRewardText;
-
-    // multiplier...
+    public Text scoreText;
+    public Text scoreRetainer;
+    public int food; // functions as health (Reward)
+    
+    private int scoreValue;
+    private float timer;
 
     private PlayerStats _playerStats;
     private Realm _realm;
-    private int reward;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +27,12 @@ public class ScoreController : MonoBehaviour
                 _playerStats = _realm.Add(new PlayerStats("player", 0));
             });
         }
-        highScoreText.text = "HIGH SCORE: " + _playerStats.Score.ToString();
-        reward = 0;
+        highScoreText.text = _playerStats.Score.ToString();
+
+        if (food == 0) 
+        {
+            scoreValue = int.Parse(scoreRetainer.text);
+        }
     }
 
     void OnDisable() {
@@ -38,22 +42,28 @@ public class ScoreController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentScoreText.text = "SCORE: " + Mathf.Floor(Time.timeSinceLevelLoad); // might cause a problem when pause is implemented...
+        timer += Time.deltaTime;
+        if (timer > 1f) 
+        {
+            scoreValue += 1 * food;
+            timer = 0f;
+        }
+        scoreText.text = scoreValue.ToString();
     }
 
     public void SetHighScore() {
-        float snapshotScore = (Mathf.Floor(Time.timeSinceLevelLoad) * reward);
-        if (snapshotScore > _playerStats.Score) {
+        if (scoreValue > _playerStats.Score) {
             _realm.Write(() => {
-                _playerStats.Score = (int)snapshotScore;
+                _playerStats.Score = scoreValue;
             });
-            highScoreText.text = "HIGH SCORE: " + snapshotScore;
+            highScoreText.text = scoreValue.ToString();
         }
     }
 
-    public void GetReward() {
-        reward++;
-        Debug.Log(reward);
-        currentRewardText.text = "x " + reward.ToString(); // functions as a multiplier
+    public void GetFood() {
+        if (food < 3) {
+            food++;
+        }
+        // currentRewardText.text = "x " + reward.ToString(); // functions as a multiplier
     }
 }

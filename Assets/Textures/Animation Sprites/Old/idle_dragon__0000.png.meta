@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Textures/arrow.png.meta
+guid: eae58376ed087dc4785ca170636e12fb
+=======
 guid: 4aeb8d7df5c7b0043ba07cd48a26f17c
+>>>>>>> josh's_branch:Assets/Textures/Animation Sprites/idle_dragon__0000.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

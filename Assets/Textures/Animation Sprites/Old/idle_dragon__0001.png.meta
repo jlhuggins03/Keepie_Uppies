@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Textures/dragon.png.meta
+guid: 72317f0e9ea9a53439dcd3c14621389a
+=======
 guid: e2850cf44de188f45bcdbd71b17cbe15
+>>>>>>> josh's_branch:Assets/Textures/Animation Sprites/idle_dragon__0001.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
