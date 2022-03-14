@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour
     {
         projectile = GetComponent<SpriteRenderer>();
         int randomPositionX = Random.Range(0, 2); // only range with float is maximally inclusive, int is not.
-        float randomPositionY = Random.Range(-4.5f, 4.5f);
+        float randomPositionY = Random.Range(-4f, 4.5f);
 
         if (_fixedPositionX[randomPositionX] == -3) {
             startPosition = "left";

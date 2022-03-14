@@ -206,21 +206,20 @@ public class Player : MonoBehaviour
         if (collider.gameObject.tag == "Projectile")
         {
             AudioManager.me.playObstacleHitSFX();
-            score.food--;
+            score.MinusHealth();
+            score.ResetMultiplier();
         }
         else if (collider.gameObject.tag == "Reward")
         {
             Debug.Log("Food Collected!");
             AudioManager.me.playRewardSFX();
-            score.GetFood();
-
-            // add health ui things
+            score.AddHealth();
         }
         else if (collider.gameObject.tag == "Big Reward")
         {
             Debug.Log("Big Reward Collected!");
             AudioManager.me.playRewardSFX();
-            score.GetFood();
+            score.AddMultiplier();
         }
     }
     
@@ -239,7 +238,6 @@ public class Player : MonoBehaviour
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        
     }
 
     //Collision Animation Marker
