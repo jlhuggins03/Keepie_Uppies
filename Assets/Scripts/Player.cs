@@ -186,7 +186,6 @@ public class Player : MonoBehaviour
     /* Player collision */
     void OnTriggerEnter2D(Collider2D collider)
     {
-
         // Player collisions with world bounds
         if (collider.gameObject.tag == "Sky Zone")
         {
@@ -194,6 +193,7 @@ public class Player : MonoBehaviour
         }
         else if (collider.gameObject.tag == "Dead Zone")
         {
+            AudioManager.me.playObstacleHitSFX();
             EndGame();
         }
 

@@ -5504,7 +5504,7 @@ GameObject:
   - component: {fileID: 584474661}
   - component: {fileID: 584474660}
   m_Layer: 0
-  m_Name: BeachLayer
+  m_Name: CastleLayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11219,7 +11219,7 @@ GameObject:
   - component: {fileID: 1226111019}
   - component: {fileID: 1226111018}
   m_Layer: 0
-  m_Name: ShipLayer
+  m_Name: GrassLayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11763,7 +11763,7 @@ GameObject:
   - component: {fileID: 1295519384}
   - component: {fileID: 1295519383}
   m_Layer: 0
-  m_Name: FrontSeaLayer
+  m_Name: DeadZoneLayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
