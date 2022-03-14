@@ -1237,13 +1237,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-<<<<<<< Updated upstream
-  m_AnchoredPosition: {x: -4.6447144, y: -7.5726013}
-  m_SizeDelta: {x: -30.7107, y: 0}
-=======
-  m_AnchoredPosition: {x: -3.7392883, y: -7.5726013}
-  m_SizeDelta: {x: -32.5215, y: 0}
->>>>>>> Stashed changes
+  m_AnchoredPosition: {x: -6.1046, y: -7.5726}
+  m_SizeDelta: {x: -27.7908, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &339527639
 GameObject:
@@ -3757,7 +3752,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4637,7 +4632,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6460,7 +6455,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 33.891815, y: -0.6474991}
   m_SizeDelta: {x: 132.2392, y: 31.5209}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6535,7 +6530,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 33.891815, y: -0.6474991}
   m_SizeDelta: {x: 132.2392, y: 31.5209}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6825,7 +6820,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1932219992
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7446,13 +7441,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-<<<<<<< Updated upstream
-  m_AnchoredPosition: {x: -3.9587097, y: -7.5726013}
-  m_SizeDelta: {x: -32.0826, y: 0}
-=======
-  m_AnchoredPosition: {x: -5.229889, y: -7.5726013}
-  m_SizeDelta: {x: -29.5402, y: 0}
->>>>>>> Stashed changes
+  m_AnchoredPosition: {x: -4.623, y: -7.5726}
+  m_SizeDelta: {x: -30.754, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2100689198
 GameObject:
