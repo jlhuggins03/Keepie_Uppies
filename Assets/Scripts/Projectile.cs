@@ -55,7 +55,15 @@ public class Projectile : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.gameObject.tag == "Obstacle")
+        if (collider.gameObject.tag == "Dead Zone")
+        {
+            gameObject.SetActive(false);             
+        }
+        else if (collider.gameObject.tag == "Player")
+        {
+            gameObject.SetActive(false);             
+        }
+        else if (collider.gameObject.tag == "Obstacle")
         {
             gameObject.SetActive(false);          
         }

@@ -5,33 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    // public SoundController sound;
-    // [SerializedField]
-
-    // public AudioClip collectReward;
-    // public AudioSource audioSource;
-
     public ScoreController score;
     public AudioSource playOnTrigger;
 
     public static GameObject playerinstance;
 
-    public float[] lanes = new float[] { -3f, 0f, 3f }; // x position of each lane... for some reason im exceeding world bounds for it to work properly??
+    public float[] lanes = new float[] { -3f, 0f, 3f }; // x position of each lane. note: it is exceeding world bounds in order to work properly?
     private int targetLane = 1; // middle lane
 
-    public float superJumpMultiplier;
-    public float gravity = 2f;
-    private float jumpHeight = 1f;
+    // public float superJumpMultiplier;
+    private float gravity = 0.5f;
+    private float jumpHeight = 1.5f;
     private float targetJump = 0f;
 
-    public float laneSwapSpeed = 2f;
-    public float jumpSpeed = 2f;
+    private float laneSwapSpeed = 5f;
+    private float jumpSpeed = 5f;
 
     private bool isSwappingLanes = false;
     private bool isJumping = false;
+    private bool isFalling = false;
 
-    private float skyZone = 4f;
-    private float deadZone = -4f;
+    // private float skyZone = 4f;
+    // private float deadZone = -4f;
 
     private Vector3 fp;   //First touch position
     private Vector3 lp;   //Last touch position
@@ -55,15 +50,13 @@ public class Player : MonoBehaviour
 
         targetJump = transform.position.y + jumpHeight; // Initialize tartgetJump position.
 
-        dragDistance = Screen.height * 10 / 100; //dragDistance is 10% height of the screen
+        dragDistance = Screen.width * 5 / 100; //dragDistance is 5% width of the screen
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log(transform.position);
-
-        if (Input.touchCount == 1) // user is touching the screen with a single touch
+        if (Input.touchCount == 1 && isJumping == false && isSwappingLanes == false) // user is touching the screen with a single touch and not doing an action currently.
         {
             Touch touch = Input.GetTouch(0); // get the touch
             if (touch.phase == TouchPhase.Began) //check for the first touch
@@ -83,6 +76,7 @@ public class Player : MonoBehaviour
                 if (Mathf.Abs(lp.x - fp.x) > dragDistance || Mathf.Abs(lp.y - fp.y) > dragDistance) //It's a drag
                 {
                     Debug.Log("Drag registered");
+
                     //check if the drag is vertical or horizontal
                     if (Mathf.Abs(lp.x - fp.x) > Mathf.Abs(lp.y - fp.y))
                     {   
@@ -125,51 +119,42 @@ public class Player : MonoBehaviour
                         {   
                             //Down swipe
                             Debug.Log("Down Swipe");
-                            targetJump = transform.position.y + (superJumpMultiplier * jumpHeight);
+                            targetJump = transform.position.y - jumpHeight;
                             isJumping = true;
+                            isFalling = true;
+                            AudioManager.me.playPlayerMoveSFX(); // play the jump sound
                         }
                     }
                 }
-                // else
-                // {   //It's a tap as the drag distance is less than 20% of the screen height
-                //     Debug.Log("Tap");
-                //     if (isJumping == false && transform.position.y <= skyZone)
-                //     {
-                //         targetJump = transform.position.y + jumpHeight;
-                //         isJumping = true;
-                //     }
-                // }
-
-                // Did this Ever Work?
             }
         }
 
-        /* Vertical movement */
+        /* World rules */
         // Gravity affecting player
-        else
+        if (isJumping == false)
         {
-            transform.position += Vector3.down * gravity * Time.deltaTime; // if isJumping = false?
+            transform.position += Vector3.down * gravity * Time.deltaTime;
         }
-        // Player hitting the floor
-        if (transform.position.y <= deadZone)
-        {
-            EndGame();
-        }
-        // Player past max jumping height
-        if (transform.position.y >= skyZone)
-        {
-            isJumping = false;
-        }
+
+        /* Vertical movement */
         // Move player towards the target jump's position
         if (isJumping == true && Mathf.Abs(transform.position.y - targetJump) > 0.05f)
         {
-            transform.position += Vector3.up * jumpSpeed * Time.deltaTime;
+            if (isFalling == true)
+            {
+                transform.position += Vector3.down * jumpSpeed * Time.deltaTime;
+            }
+            else
+            {
+                transform.position += Vector3.up * jumpSpeed * Time.deltaTime;
+            }
         }
         // When close enough to the final vertical position, snap to it
         else if (isJumping == true && Mathf.Abs(transform.position.y - targetJump) <= 0.05f)
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(lanes[targetLane], targetJump, 0), Time.deltaTime); // may need to say the targetlane as well.
+            transform.position = Vector3.Lerp(transform.position, new Vector3(lanes[targetLane], targetJump, 0), Time.deltaTime);
             isJumping = false;
+            isFalling = false;
         }
 
         /* Horizontal movement */
@@ -201,10 +186,27 @@ public class Player : MonoBehaviour
     /* Player collision */
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Obstacle" || collider.gameObject.tag == "Projectile")
+
+        // Player collisions with world bounds
+        if (collider.gameObject.tag == "Sky Zone")
+        {
+            isJumping = false;
+        }
+        else if (collider.gameObject.tag == "Dead Zone")
+        {
+            EndGame();
+        }
+
+        // Player collisions with objects
+        if (collider.gameObject.tag == "Obstacle")
         {
             AudioManager.me.playObstacleHitSFX();
             EndGame();
+        }
+        if (collider.gameObject.tag == "Projectile")
+        {
+            AudioManager.me.playObstacleHitSFX();
+            score.food--;
         }
         else if (collider.gameObject.tag == "Reward")
         {
@@ -213,9 +215,6 @@ public class Player : MonoBehaviour
             score.GetFood();
 
             // add health ui things
-
-            // score.GetReward();
-            // Debug.Log("Reward Collected!");
         }
         else if (collider.gameObject.tag == "Big Reward")
         {

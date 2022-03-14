@@ -26,8 +26,12 @@ public class Obstacle : MonoBehaviour
     void Update()
     {
         transform.position += fallingDownLeft * movementSpeed * Time.deltaTime;
-        if (transform.position.y <= -10.0f) {
-            gameObject.SetActive(false);
+    }
+
+    void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.gameObject.tag == "Dead Zone")
+        {
+            gameObject.SetActive(false);             
         }
     }
 
