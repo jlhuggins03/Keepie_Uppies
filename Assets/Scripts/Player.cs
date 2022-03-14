@@ -201,7 +201,24 @@ public class Player : MonoBehaviour
     /* Player collision */
     void OnTriggerEnter2D(Collider2D collider)
     {
+<<<<<<< Updated upstream
         if (collider.gameObject.tag == "Obstacle" || collider.gameObject.tag == "Projectile")
+=======
+
+        // Player collisions with world bounds
+        if (collider.gameObject.tag == "Sky Zone")
+        {
+            isJumping = false;
+        }
+        else if (collider.gameObject.tag == "Dead Zone")
+        {
+            AudioManager.me.playObstacleHitSFX();
+            EndGame();
+        }
+
+        // Player collisions with objects
+        if (collider.gameObject.tag == "Obstacle")
+>>>>>>> Stashed changes
         {
             AudioManager.me.playObstacleHitSFX();
             EndGame();

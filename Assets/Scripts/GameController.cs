@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour
         if (_timeUntilReward <= 0) {
             GameObject reward = ObjectPool.SharedInstance.GetPooledReward();
             if (reward != null) {
-                //AudioManager.me.playObstacleSpawnSFX();// play audio upon object spawn
+                AudioManager.me.playObstacleSpawnSFX();// play audio upon object spawn
                 reward.SetActive(true);
             };
             _timeUntilReward = _rewardTime;
