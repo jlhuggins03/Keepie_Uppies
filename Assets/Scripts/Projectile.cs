@@ -25,11 +25,14 @@ public class Projectile : MonoBehaviour
         int randomPositionX = Random.Range(0, 2); // only range with float is maximally inclusive, int is not.
         float randomPositionY = Random.Range(-4f, 4.5f);
 
-        if (_fixedPositionX[randomPositionX] == -3) {
+        if (_fixedPositionX[randomPositionX] == -3)
+        {
             startPosition = "left";
             projectile.flipX = true;
             
-        } else {
+        }
+        else
+        {
             startPosition = "right";
             projectile.flipX = false;
             
@@ -41,14 +44,19 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startPosition == "left") {
+        if (startPosition == "left")
+        {
             transform.position += fallingRight * movementSpeed * Time.deltaTime;
-            if (transform.position.x >= 3.0f) {
+            if (transform.position.x >= 3.0f)
+            {
                 gameObject.SetActive(false);
             }
-        } else {
+        }
+        else
+        {
             transform.position += fallingLeft * movementSpeed * Time.deltaTime;
-            if (transform.position.x <= -3.0f) {
+            if (transform.position.x <= -3.0f)
+            {
                 gameObject.SetActive(false);
             }
         }

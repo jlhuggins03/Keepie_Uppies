@@ -7,7 +7,7 @@ public class Obstacle : MonoBehaviour
 
     public float movementSpeed = 3;
 
-    private float[] _fixedPositionX = new float[] {-1.5f, -1.0f, 0.5f, 0.0f, 0.5f, 1.0f, 1.5f, 2.0f, 2.5f, 3.0f};
+    private float[] _fixedPositionX = new float[] {-1.5f, -1.0f, 0.5f, 0.0f, 0.5f, 1.0f, 1.5f, 2.0f, 2.5f};
     private Vector3 fallingDownLeft = new Vector3 (-.25f,-1f,0f);
 
     // Allows Sprite to have multiple colliders
@@ -18,13 +18,17 @@ public class Obstacle : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-        int randomPositionX = Random.Range(0, 10);
+        int randomPositionX = Random.Range(0, 9);
         transform.position = new Vector3(_fixedPositionX[randomPositionX], 6.5f, -1.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.x >= 3.0 || transform.position.x <= -3.0)
+        {
+            gameObject.SetActive(false); 
+        }
         transform.position += fallingDownLeft * movementSpeed * Time.deltaTime;
     }
 
