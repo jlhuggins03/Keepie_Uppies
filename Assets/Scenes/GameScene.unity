@@ -266,9 +266,13 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -376, y: 1011}
 =======
   m_AnchoredPosition: {x: -370, y: 988}
+>>>>>>> Stashed changes
+=======
+  m_AnchoredPosition: {x: -391, y: 1009}
 >>>>>>> Stashed changes
   m_SizeDelta: {x: 800, y: 200}
   m_Pivot: {x: 0, y: 1}
@@ -2122,7 +2126,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -562, y: 967}
+=======
+  m_AnchoredPosition: {x: -562, y: 965}
+>>>>>>> Stashed changes
   m_SizeDelta: {x: 800, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &188623706
@@ -2138,7 +2146,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
+<<<<<<< Updated upstream
   m_Color: {r: 0.7924528, g: 0, b: 0, a: 1}
+=======
+  m_Color: {r: 0.6415094, g: 0.003025995, b: 0.003025995, a: 1}
+>>>>>>> Stashed changes
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6200,8 +6212,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -3.9397888, y: -7.5726013}
   m_SizeDelta: {x: -32.1205, y: 0}
+=======
+  m_AnchoredPosition: {x: -6.07901, y: -7.5726013}
+  m_SizeDelta: {x: -27.8419, y: 0}
+>>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &656946204
 GameObject:
@@ -12545,8 +12562,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -5.0795, y: -7.5726}
   m_SizeDelta: {x: -29.8411, y: 0}
+=======
+  m_AnchoredPosition: {x: -3.5838928, y: -7.5726013}
+  m_SizeDelta: {x: -32.8323, y: 0}
+>>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1343474175
 GameObject:
@@ -16866,10 +16888,14 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -373.8, y: 1106}
   m_SizeDelta: {x: 800, y: 200}
 =======
   m_AnchoredPosition: {x: -360, y: 1144}
+=======
+  m_AnchoredPosition: {x: -375, y: 1165}
+>>>>>>> Stashed changes
   m_SizeDelta: {x: 800, y: 250}
 >>>>>>> Stashed changes
   m_Pivot: {x: 0, y: 1}
