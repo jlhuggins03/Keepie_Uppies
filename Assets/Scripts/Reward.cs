@@ -24,38 +24,21 @@ public class Reward : MonoBehaviour
     void Update()
     {
         transform.position += Vector3.down * movementSpeed * Time.deltaTime;
-        if (transform.position.y <= -15.0f)
-        {
-            gameObject.SetActive(false); //if object enters deadzone
-        }
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "Dead Zone")
         {
-            // playSound.Play();
-            // Debug.Log(playSound.volume + "log volume");
-            // Debug.Log(playSound.isPlaying + "log isPlaying");
+            gameObject.SetActive(false);             
+        }
+        else if (collider.gameObject.tag == "Player")
+        {
             gameObject.SetActive(false);          
             
         }
         else if (collider.gameObject.tag == "Obstacle")
         {
             gameObject.SetActive(false);
-
-            // Prevents overlapping reward and obstacle
-            // if (transform.position.x == -1.4f)
-            // {
-            //     transform.position += Vector3.zero;
-            // }
-            // else if (transform.position.x == 0f)
-            // {
-            //     transform.position += Vector3.right * 1.4f;
-            // }
-            // else
-            // {
-            //     transform.position += Vector3.left * 1.4f;
-            // }
         }
         else if (collider.gameObject.tag == "Projectile")
         {

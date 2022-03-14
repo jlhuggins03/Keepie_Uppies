@@ -9,6 +9,8 @@ TagManager:
   - Projectile
   - SFX
   - Big Reward
+  - Dead Zone
+  - Sky Zone
   layers:
   - Default
   - TransparentFX

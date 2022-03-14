@@ -9,10 +9,13 @@ public class ScoreController : MonoBehaviour
     public Text highScoreText;
     public Text scoreText;
     public Text scoreRetainer;
-    public int food; // functions as health (Reward)
+    public Text healthText;
+    public Text scoreMultiplierText;
+    public int food = 3; // functions as health (Reward)
     
+    private float timer;    
     private int scoreValue;
-    private float timer;
+    private int scoreMultiplier = 1;
 
     private PlayerStats _playerStats;
     private Realm _realm;
@@ -45,14 +48,15 @@ public class ScoreController : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > 1f) 
         {
-            scoreValue += 1 * food;
+            scoreValue += 1 * food * scoreMultiplier;
             timer = 0f;
         }
         scoreText.text = scoreValue.ToString();
     }
 
     public void SetHighScore() {
-        if (scoreValue > _playerStats.Score) {
+        if (scoreValue > _playerStats.Score)
+        {
             _realm.Write(() => {
                 _playerStats.Score = scoreValue;
             });
@@ -60,10 +64,30 @@ public class ScoreController : MonoBehaviour
         }
     }
 
-    public void GetFood() {
-        if (food < 3) {
+    public void AddHealth()
+    {
+        if (food < 3)
+        {
             food++;
         }
-        // currentRewardText.text = "x " + reward.ToString(); // functions as a multiplier
+        healthText.text = "hp " + food.ToString();
+    }
+
+    public void MinusHealth()
+    {
+        food--;
+        healthText.text = "hp " + food.ToString();
+    }
+
+    public void AddMultiplier()
+    {
+        scoreMultiplier++;
+        scoreMultiplierText.text = "x " + scoreMultiplier.ToString();
+    }
+
+    public void ResetMultiplier()
+    {
+        scoreMultiplier = 1;
+        scoreMultiplierText.text = "x " + scoreMultiplier.ToString();
     }
 }

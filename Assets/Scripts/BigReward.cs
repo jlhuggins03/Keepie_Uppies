@@ -55,7 +55,11 @@ public class BigReward : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "Dead Zone")
+        {
+            gameObject.SetActive(false);             
+        }
+        else if (collider.gameObject.tag == "Player")
         {
             gameObject.SetActive(false);          
         }
