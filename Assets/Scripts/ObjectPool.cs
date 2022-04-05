@@ -15,6 +15,10 @@ public class ObjectPool : MonoBehaviour
     public GameObject rewardToPool;
     public int rewardPoolSize;
 
+    public List<GameObject> pooledBigRewards;
+    public GameObject bigRewardToPool;
+    public int bigRewardPoolSize;
+
     public List<GameObject> pooledProjectiles;
     public GameObject projectileToPool;
     public int projectilePoolSize;
@@ -39,6 +43,14 @@ public class ObjectPool : MonoBehaviour
             tempReward = Instantiate(rewardToPool);
             tempReward.SetActive(false);
             pooledRewards.Add(tempReward);
+        }
+
+        pooledBigRewards = new List<GameObject>();
+        GameObject tempBigReward;
+        for (int i = 0; i < bigRewardPoolSize; i++) {
+            tempBigReward = Instantiate(bigRewardToPool);
+            tempBigReward.SetActive(false);
+            pooledBigRewards.Add(tempBigReward);
         }
 
         pooledProjectiles = new List<GameObject>();
@@ -67,6 +79,16 @@ public class ObjectPool : MonoBehaviour
         }
         return null;
     }
+
+        public GameObject GetPooledBigReward() {
+        for (int i = 0; i < bigRewardPoolSize; i++) {
+            if (pooledBigRewards[i].activeInHierarchy == false) {
+                return pooledBigRewards[i];
+            }
+        }
+        return null;
+    }
+
 
     public GameObject GetPooledProjectile() {
         for (int i = 0; i < projectilePoolSize; i++) {
