@@ -27,11 +27,13 @@ public class Projectile : MonoBehaviour
 
         if (_fixedPositionX[randomPositionX] == -3) {
             startPosition = "left";
-            projectile.flipX = true;
+            // flip the entire projectile gameObject (sprite and colliders) if spawn from left.
+            this.gameObject.transform.eulerAngles = new Vector3(0, 180, 0);
             
         } else {
             startPosition = "right";
-            projectile.flipX = false;
+            // set/reflip the entire projectile gameObject (sprite and colliders) if spawn from right.
+            this.gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
             
         }
 
