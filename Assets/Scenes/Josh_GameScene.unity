@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 41065391}
   - component: {fileID: 41065390}
   m_Layer: 5
-  m_Name: GameRewards
+  m_Name: GameScoreMultiplier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10643,7 +10643,9 @@ MonoBehaviour:
   - 0
   - 1.5
   GameOverScene: {fileID: 1026974635}
-  ScoreUI: {fileID: 0}
+  UIHealth: {fileID: 188623704}
+  UIScore: {fileID: 1833241689}
+  UIScoreMultiplyer: {fileID: 41065388}
   PauseButtonUI: {fileID: 748105992}
   colliders:
   - {fileID: 1150546325}
