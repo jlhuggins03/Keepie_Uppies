@@ -181,6 +181,13 @@ public class Player : MonoBehaviour
         if (score.food == 0) {
             EndGame();
         }
+
+        // // if player is below a threshold, for some other reason, end the game
+        // if (transform.position.y <= -2265.0f)
+        // {
+        //     AudioManager.me.playObstacleHitSFX();
+        //     EndGame();
+        // }
     }
 
     /* Player collision */
@@ -196,6 +203,7 @@ public class Player : MonoBehaviour
             AudioManager.me.playObstacleHitSFX();
             EndGame();
         }
+        
 
         // Player collisions with objects
         if (collider.gameObject.tag == "Obstacle")
