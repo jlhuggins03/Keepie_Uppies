@@ -33,7 +33,12 @@ public class Player : MonoBehaviour
     private float dragDistance;  //minimum distance for a swipe to be registered
 
     public GameObject GameOverScene;
-    public GameObject ScoreUI;
+
+    //UI things for player. !!This WILL need to be replaced once we determine how to get themes functioning
+    public GameObject UIHealth;
+    public GameObject UIScore;
+    public GameObject UIScoreMultiplyer;
+
     public GameObject PauseButtonUI;
 
     // Allows Sprite to have multiple colliders
@@ -46,7 +51,9 @@ public class Player : MonoBehaviour
     {
         GameOverScene.SetActive(false);
         PauseButtonUI.SetActive(true);
-        ScoreUI.SetActive(true);
+        UIHealth.SetActive(true);
+        UIScore.SetActive(true);
+        UIScoreMultiplyer.SetActive(true);
 
         targetJump = transform.position.y + jumpHeight; // Initialize tartgetJump position.
 
@@ -181,6 +188,13 @@ public class Player : MonoBehaviour
         if (score.food == 0) {
             EndGame();
         }
+
+        // // if player is below a threshold, for some other reason, end the game
+        // if (transform.position.y <= -2265.0f)
+        // {
+        //     AudioManager.me.playObstacleHitSFX();
+        //     EndGame();
+        // }
     }
 
     /* Player collision */
@@ -196,6 +210,7 @@ public class Player : MonoBehaviour
             AudioManager.me.playObstacleHitSFX();
             EndGame();
         }
+        
 
         // Player collisions with objects
         if (collider.gameObject.tag == "Obstacle")
@@ -231,7 +246,9 @@ public class Player : MonoBehaviour
         Time.timeScale = 0f;
         GameOverScene.SetActive(true);
         PauseButtonUI.SetActive(false);
-        ScoreUI.SetActive(false);
+        UIHealth.SetActive(false);
+        UIScore.SetActive(false);
+        UIScoreMultiplyer.SetActive(false);
         AudioManager.me.pauseGameMusic();
     }
 
