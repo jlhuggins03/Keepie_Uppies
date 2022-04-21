@@ -201,7 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 38719609}
   m_Layer: 5
-  m_Name: ThemesMenu
+  m_Name: BeachThemesMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -947,7 +947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &99546110
 RectTransform:
   m_ObjectHideFlags: 0
@@ -965,7 +965,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -534}
+  m_AnchoredPosition: {x: 0, y: -767}
   m_SizeDelta: {x: 752.9039, y: 141.0977}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &99546111
@@ -5597,7 +5597,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584474658}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.03, y: 4.3729725, z: 18.43976}
+  m_LocalPosition: {x: 10.03, y: 4.3729725, z: 18.55}
   m_LocalScale: {x: 25, y: 15, z: 1}
   m_Children: []
   m_Father: {fileID: 730733163}
@@ -7125,7 +7125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 781577824}
   m_Layer: 5
-  m_Name: ThemesMenu
+  m_Name: CastleThemesMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7340,7 +7340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 821157761}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.03, y: 3.83, z: 18.44976}
+  m_LocalPosition: {x: 10.03, y: 3.83, z: 18.56}
   m_LocalScale: {x: 25, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 730733163}
@@ -7450,7 +7450,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 852235592}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.019509, y: 4.32, z: 18.43976}
+  m_LocalPosition: {x: 10.019509, y: 4.32, z: 18.5}
   m_LocalScale: {x: 25, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 730733163}
@@ -11366,7 +11366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226111016}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.03, y: 4.432973, z: 18.42976}
+  m_LocalPosition: {x: 10.03, y: 4.432973, z: 18.55}
   m_LocalScale: {x: 25, y: 15, z: 1}
   m_Children: []
   m_Father: {fileID: 730733163}
@@ -11910,7 +11910,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1295519381}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.03, y: 1.1, z: 18.40976}
+  m_LocalPosition: {x: 10.03, y: 1.1, z: 18.5}
   m_LocalScale: {x: 25, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 730733163}
@@ -12632,6 +12632,9 @@ MonoBehaviour:
   backGroundTheme:
   - {fileID: 132313771}
   - {fileID: 1512507984}
+  themesMenu:
+  - {fileID: 38719608}
+  - {fileID: 781577823}
   objectTheme: []
 --- !u!1 &1402126755
 GameObject:
