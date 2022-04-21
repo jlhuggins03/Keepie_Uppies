@@ -63,6 +63,20 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("A key is held down");
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Debug.Log("D key is held down");
+        }
+
+
+        
+
+
         if (Input.touchCount == 1 && isJumping == false && isSwappingLanes == false) // user is touching the screen with a single touch and not doing an action currently.
         {
             Touch touch = Input.GetTouch(0); // get the touch
@@ -136,6 +150,11 @@ public class Player : MonoBehaviour
             }
         }
 
+        
+
+
+
+
         /* World rules */
         // Gravity affecting player
         if (isJumping == false)
@@ -159,7 +178,8 @@ public class Player : MonoBehaviour
         // When close enough to the final vertical position, snap to it
         else if (isJumping == true && Mathf.Abs(transform.position.y - targetJump) <= 0.05f)
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(lanes[targetLane], targetJump, 0), Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(lanes[targetLane], targetJump, 0.00f), Time.deltaTime);
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0.00f);
             isJumping = false;
             isFalling = false;
         }
@@ -180,7 +200,8 @@ public class Player : MonoBehaviour
         // When close enough to the final horizontal position, snap to it
         else if (isSwappingLanes == true && Mathf.Abs(transform.position.x - lanes[targetLane]) <= 0.05f)
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(lanes[targetLane], transform.position.y, 0), Time.deltaTime); // causes a slight player movement downward cause its on position y not targetjump...
+            transform.position = Vector3.Lerp(transform.position, new Vector3(lanes[targetLane], transform.position.y, 0.00f), Time.deltaTime); // causes a slight player movement downward cause its on position y not targetjump...
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0.00f);
             isSwappingLanes = false;
         }
 
