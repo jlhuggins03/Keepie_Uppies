@@ -18,6 +18,9 @@ public class ThemeManager : MonoBehaviour
     public GameObject[] backGroundTheme;
     private GameObject oldBGTheme, newBGTheme;
 
+    public GameObject[] themesMenu;
+    private GameObject oldThemeMenu, newThemeMenu;
+
     public GameObject[] objectTheme;
     
     
@@ -105,31 +108,47 @@ public class ThemeManager : MonoBehaviour
 
     
     
-    void SetTheme(GameObject newTheme, GameObject[] list)
+    void SetTheme(GameObject newTheme, GameObject[] themeList, GameObject newTMenu, GameObject[] themeMenuList)
     {
         //check for current active theme 
-        for (int i = 0; i < list.Length; i++)
+        for (int i = 0; i < themeList.Length; i++)
         {
-            if(list[i].activeSelf == true)
+            if(themeList[i].activeSelf == true)
             {
-                oldBGTheme = list[i];
+                oldBGTheme = themeList[i];
             }
         }
 
-        newBGTheme = newTheme;
+        // check for active theme menu
+        for (int i = 0; i < themeMenuList.Length; i++)
+        {
+            if(themeMenuList[i].activeSelf == true)
+            {
+                oldThemeMenu = themeMenuList[i];
+            }
+        }
 
+        //coping the passed variables to the constructor vairables
+        newBGTheme = newTheme;
+        newThemeMenu = newTMenu;
+
+        // disabling old BG and enabling new BG
         oldBGTheme.SetActive(false);
         newBGTheme.SetActive(true);
+
+        // disabling old Thememenu and enabling new Theme menu
+        oldThemeMenu.SetActive(false);
+        newThemeMenu.SetActive(true);
     }
 
     public void SetTheme1()
     {
-        SetTheme(backGroundTheme[0], backGroundTheme);
+        SetTheme(backGroundTheme[0], backGroundTheme, themesMenu[0], themesMenu);
     }
 
     public void SetTheme2()
     {
-        SetTheme(backGroundTheme[1], backGroundTheme);
+        SetTheme(backGroundTheme[1], backGroundTheme, themesMenu[1], themesMenu);
     }
 
 

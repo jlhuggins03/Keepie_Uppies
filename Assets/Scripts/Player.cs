@@ -33,7 +33,12 @@ public class Player : MonoBehaviour
     private float dragDistance;  //minimum distance for a swipe to be registered
 
     public GameObject GameOverScene;
-    public GameObject ScoreUI;
+
+    //UI things for player. !!This WILL need to be replaced once we determine how to get themes functioning
+    public GameObject UIHealth;
+    public GameObject UIScore;
+    public GameObject UIScoreMultiplyer;
+
     public GameObject PauseButtonUI;
 
     // Allows Sprite to have multiple colliders
@@ -46,7 +51,9 @@ public class Player : MonoBehaviour
     {
         GameOverScene.SetActive(false);
         PauseButtonUI.SetActive(true);
-        ScoreUI.SetActive(true);
+        UIHealth.SetActive(true);
+        UIScore.SetActive(true);
+        UIScoreMultiplyer.SetActive(true);
 
         targetJump = transform.position.y + jumpHeight; // Initialize tartgetJump position.
 
@@ -56,6 +63,20 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("A key is held down");
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Debug.Log("D key is held down");
+        }
+
+
+        
+
+
         if (Input.touchCount == 1 && isJumping == false && isSwappingLanes == false) // user is touching the screen with a single touch and not doing an action currently.
         {
             Touch touch = Input.GetTouch(0); // get the touch
@@ -129,6 +150,11 @@ public class Player : MonoBehaviour
             }
         }
 
+        
+
+
+
+
         /* World rules */
         // Gravity affecting player
         if (isJumping == false)
@@ -152,7 +178,8 @@ public class Player : MonoBehaviour
         // When close enough to the final vertical position, snap to it
         else if (isJumping == true && Mathf.Abs(transform.position.y - targetJump) <= 0.05f)
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(lanes[targetLane], targetJump, 0), Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(lanes[targetLane], targetJump, 0.00f), Time.deltaTime);
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0.00f);
             isJumping = false;
             isFalling = false;
         }
@@ -173,7 +200,8 @@ public class Player : MonoBehaviour
         // When close enough to the final horizontal position, snap to it
         else if (isSwappingLanes == true && Mathf.Abs(transform.position.x - lanes[targetLane]) <= 0.05f)
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(lanes[targetLane], transform.position.y, 0), Time.deltaTime); // causes a slight player movement downward cause its on position y not targetjump...
+            transform.position = Vector3.Lerp(transform.position, new Vector3(lanes[targetLane], transform.position.y, 0.00f), Time.deltaTime); // causes a slight player movement downward cause its on position y not targetjump...
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0.00f);
             isSwappingLanes = false;
         }
 
@@ -181,6 +209,13 @@ public class Player : MonoBehaviour
         if (score.food == 0) {
             EndGame();
         }
+
+        // // if player is below a threshold, for some other reason, end the game
+        // if (transform.position.y <= -2265.0f)
+        // {
+        //     AudioManager.me.playObstacleHitSFX();
+        //     EndGame();
+        // }
     }
 
     /* Player collision */
@@ -196,6 +231,7 @@ public class Player : MonoBehaviour
             AudioManager.me.playObstacleHitSFX();
             EndGame();
         }
+        
 
         // Player collisions with objects
         if (collider.gameObject.tag == "Obstacle")
@@ -231,7 +267,9 @@ public class Player : MonoBehaviour
         Time.timeScale = 0f;
         GameOverScene.SetActive(true);
         PauseButtonUI.SetActive(false);
-        ScoreUI.SetActive(false);
+        UIHealth.SetActive(false);
+        UIScore.SetActive(false);
+        UIScoreMultiplyer.SetActive(false);
         AudioManager.me.pauseGameMusic();
     }
 

@@ -29,7 +29,12 @@ public class ScoreController : MonoBehaviour
             _realm.Write(() => {
                 _playerStats = _realm.Add(new PlayerStats("player", 0));
             });
+       }
+
+       if(_playerStats.Score == null){
+        Debug.Log("Test 1");
         }
+
         highScoreText.text = _playerStats.Score.ToString();
 
         if (food == 0) 
