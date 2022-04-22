@@ -7596,8 +7596,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObstacles: []
-  obstacleToPool: {fileID: 8832036213080742259, guid: d017fb030ee715647bbf73da5fa7fdba, type: 3}
-  obstaclePoolSize: 0
+  obstacleToPool: {fileID: 7846588578178877965, guid: df1c722440a451b49bbfbbf1121473cb, type: 3}
+  obstaclePoolSize: 5
   pooledRewards: []
   rewardToPool: {fileID: 2211253965211619215, guid: 241df3a2e24d76145b0402f25ce11204, type: 3}
   rewardPoolSize: 0
