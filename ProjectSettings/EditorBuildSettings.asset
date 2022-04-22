@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Josh_MainMenuScene.unity
-    guid: f824f4563647d314d9fd92f878dd69c8
+    path: Assets/Scenes/Taylor/Taylor_MainMenuScene.unity
+    guid: 1c8c4b2bea1305e4a896bcbb6d014c2c
   - enabled: 1
-    path: Assets/Scenes/Josh_GameScene.unity
-    guid: 58626d95f86c02540aa7161034431217
+    path: Assets/Scenes/Taylor/Taylor_GameScene.unity
+    guid: 195c4b58db98e0d44ac2ac48fb6b6947
   m_configObjects: {}
