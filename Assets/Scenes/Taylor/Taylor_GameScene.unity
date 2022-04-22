@@ -7605,8 +7605,8 @@ MonoBehaviour:
   bigRewardToPool: {fileID: 5015909101549938736, guid: 2bac02003ae7a214aad450642cec3a5d, type: 3}
   bigRewardPoolSize: 10
   pooledProjectiles: []
-  projectileToPool: {fileID: 7700711693396217145, guid: 3fe3b2a56f3d4084d8d175a94fca5bdf, type: 3}
-  projectilePoolSize: 0
+  projectileToPool: {fileID: 7120897130159154521, guid: 53433f4c6e1ef884faa80c333e207698, type: 3}
+  projectilePoolSize: 10
 --- !u!114 &874219066
 MonoBehaviour:
   m_ObjectHideFlags: 0
