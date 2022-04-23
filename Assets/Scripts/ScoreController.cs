@@ -14,7 +14,7 @@ public class ScoreController : MonoBehaviour
     public int food = 3; // functions as health (Reward)
     
     private float timer;    
-    private int scoreValue;
+    public  int scoreValue;
     private int scoreMultiplier = 1;
 
     private PlayerStats _playerStats;

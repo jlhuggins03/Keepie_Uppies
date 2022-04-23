@@ -7544,6 +7544,7 @@ GameObject:
   - component: {fileID: 874219063}
   - component: {fileID: 874219065}
   - component: {fileID: 874219066}
+  - component: {fileID: 874219067}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -7569,6 +7570,7 @@ MonoBehaviour:
   healthText: {fileID: 188623706}
   scoreMultiplierText: {fileID: 41065390}
   food: 3
+  scoreValue: 0
 --- !u!4 &874219064
 Transform:
   m_ObjectHideFlags: 0
@@ -7597,16 +7599,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObstacles: []
   obstacleToPool: {fileID: 8832036213080742259, guid: d017fb030ee715647bbf73da5fa7fdba, type: 3}
-  obstaclePoolSize: 5
+  obstaclePoolSize: 0
   pooledRewards: []
   rewardToPool: {fileID: 2211253965211619215, guid: 241df3a2e24d76145b0402f25ce11204, type: 3}
-  rewardPoolSize: 2
+  rewardPoolSize: 0
   pooledBigRewards: []
   bigRewardToPool: {fileID: 5762280834839126197, guid: 9bc69002cb66d1e41aa93b549307d3d1, type: 3}
-  bigRewardPoolSize: 2
+  bigRewardPoolSize: 0
   pooledProjectiles: []
   projectileToPool: {fileID: 7700711693396217145, guid: 3fe3b2a56f3d4084d8d175a94fca5bdf, type: 3}
-  projectilePoolSize: 10
+  projectilePoolSize: 0
 --- !u!114 &874219066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7617,6 +7619,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c192fc2c66a55047ab2286b0ab1359f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _obstacleTime: 5
+  _rewardTime: 10
+  _bigRewardTime: 15
+  _projectileTime: 2
+--- !u!114 &874219067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874219062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7e650b032e2204c8f3b1cce4fec0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &878235546
@@ -8912,6 +8930,7 @@ MonoBehaviour:
   healthText: {fileID: 0}
   scoreMultiplierText: {fileID: 0}
   food: 0
+  scoreValue: 0
 --- !u!1 &1027533671
 GameObject:
   m_ObjectHideFlags: 0
@@ -14424,6 +14443,7 @@ MonoBehaviour:
   healthText: {fileID: 0}
   scoreMultiplierText: {fileID: 0}
   food: 0
+  scoreValue: 0
 --- !u!1 &1564749251
 GameObject:
   m_ObjectHideFlags: 0

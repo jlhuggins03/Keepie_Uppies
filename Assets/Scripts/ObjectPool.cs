@@ -29,6 +29,11 @@ public class ObjectPool : MonoBehaviour
 
     void OnEnable()
     {
+        UpdateList();
+    }
+
+    public void UpdateList(){
+
         pooledObstacles = new List<GameObject>();
         GameObject tempObstacle;
         for (int i = 0; i < obstaclePoolSize; i++) {
@@ -60,7 +65,10 @@ public class ObjectPool : MonoBehaviour
             tempProjectile.SetActive(false);
             pooledProjectiles.Add(tempProjectile);
         }
+
+        
     }
+
 
     public GameObject GetPooledObstacle() {
         for (int i = 0; i < obstaclePoolSize; i++) {
@@ -98,4 +106,8 @@ public class ObjectPool : MonoBehaviour
         }
         return null;
     }
+
+    
+
+
 }
