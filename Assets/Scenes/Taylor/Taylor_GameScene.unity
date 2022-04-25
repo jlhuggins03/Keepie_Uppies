@@ -7600,10 +7600,10 @@ MonoBehaviour:
   obstaclePoolSize: 5
   pooledRewards: []
   rewardToPool: {fileID: 559604091710244825, guid: 35772a96eba505f4b8ca0cf85f028ca2, type: 3}
-  rewardPoolSize: 10
+  rewardPoolSize: 2
   pooledBigRewards: []
   bigRewardToPool: {fileID: 5015909101549938736, guid: 2bac02003ae7a214aad450642cec3a5d, type: 3}
-  bigRewardPoolSize: 10
+  bigRewardPoolSize: 2
   pooledProjectiles: []
   projectileToPool: {fileID: 7120897130159154521, guid: 53433f4c6e1ef884faa80c333e207698, type: 3}
   projectilePoolSize: 10
