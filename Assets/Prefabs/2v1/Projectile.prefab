@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 5778385999864146461}
   - component: {fileID: 6218291335234399867}
   - component: {fileID: -6725760583176052950}
-  - component: {fileID: 79728473729746895}
+  - component: {fileID: 986911699516938559}
   - component: {fileID: 5923456857438170131}
   - component: {fileID: 7951529518726155788}
   - component: {fileID: 3692248100733871555}
   - component: {fileID: 6807089119285649756}
-  - component: {fileID: 986911699516938559}
+  - component: {fileID: 79728473729746895}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Projectile
@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 7120897130159154521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -110,25 +110,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &79728473729746895
-Animator:
-  serializedVersion: 3
+--- !u!114 &986911699516938559
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7120897130159154521}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f3e0bf168ca349e41b9ac22a89f2e96e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42cb23b8f173b3c498ec49c9e160458d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 3.5
+  colliders:
+  - {fileID: 5923456857438170131}
+  - {fileID: 5923456857438170131}
+  - {fileID: 5923456857438170131}
+  - {fileID: 5923456857438170131}
 --- !u!60 &5923456857438170131
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -297,21 +296,22 @@ PolygonCollider2D:
       - {x: 0.30802375, y: -0.15907177}
       - {x: 0.33220768, y: -0.0791534}
       - {x: 0.41646737, y: -0.08188612}
---- !u!114 &986911699516938559
-MonoBehaviour:
+--- !u!95 &79728473729746895
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7120897130159154521}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42cb23b8f173b3c498ec49c9e160458d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 3.5
-  colliders:
-  - {fileID: 5923456857438170131}
-  - {fileID: 5923456857438170131}
-  - {fileID: 5923456857438170131}
-  - {fileID: 5923456857438170131}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f3e0bf168ca349e41b9ac22a89f2e96e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -303,6 +303,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 3
   colliders:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7102255655353682416}
+  - {fileID: 7787835664049639569}
+  - {fileID: 1937675756541804123}

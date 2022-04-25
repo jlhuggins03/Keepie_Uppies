@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: idle_chips
+  m_Name: idle_pepper
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,11 +20,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: cc84f44ca34f4954dbccb288522db626, type: 3}
-    - time: 0.21666667
-      value: {fileID: 21300000, guid: 62d6fdbcdd84df44392f21f7578c4af0, type: 3}
+      value: {fileID: 21300000, guid: 64f16be8c85c6214598a33286f4dbb80, type: 3}
+    - time: 0.13333334
+      value: {fileID: 21300000, guid: 943d8e2a3df739c4488ce84270e5575d, type: 3}
+    - time: 0.28333333
+      value: {fileID: 21300000, guid: c134a74058e46b34c9cafaefb9f58695, type: 3}
     - time: 0.41666666
-      value: {fileID: 21300000, guid: f75d3a80e603b654a8ab46ab3ecf08ec, type: 3}
+      value: {fileID: 21300000, guid: c37e4d7e2f478344d8200c6e82cb79ca, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,9 +46,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: cc84f44ca34f4954dbccb288522db626, type: 3}
-    - {fileID: 21300000, guid: 62d6fdbcdd84df44392f21f7578c4af0, type: 3}
-    - {fileID: 21300000, guid: f75d3a80e603b654a8ab46ab3ecf08ec, type: 3}
+    - {fileID: 21300000, guid: 64f16be8c85c6214598a33286f4dbb80, type: 3}
+    - {fileID: 21300000, guid: 943d8e2a3df739c4488ce84270e5575d, type: 3}
+    - {fileID: 21300000, guid: c134a74058e46b34c9cafaefb9f58695, type: 3}
+    - {fileID: 21300000, guid: c37e4d7e2f478344d8200c6e82cb79ca, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -73,9 +76,30 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: 
+    functionName: SetColliderForSprite
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
+    messageOptions: 0
+  - time: 0.13333334
+    functionName: SetColliderForSprite
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 1
+    messageOptions: 0
+  - time: 0.28333333
+    functionName: SetColliderForSprite
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 2
+    messageOptions: 0
+  - time: 0.41666666
+    functionName: SetColliderForSprite
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 3
     messageOptions: 0
