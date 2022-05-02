@@ -5,17 +5,17 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
 
-    private float _timeUntilObstacle = 1.0f;
-    private float _obstacleTime = 2.0f;
+    private float _timeUntilObstacle = 2; //counts down from set timer
+    public float _obstacleTime;// sets the time for the obstacle to start from
 
-    private float _timeUntilReward = 1.0f;
-    private float _rewardTime = 2.0f;
+    private float _timeUntilReward = 5;
+    public float _rewardTime;
 
-    private float _timeUntilBigReward = 10.0f;
-    private float _bigRewardTime = 8.0f;
+    private float _timeUntilBigReward = 10;
+    public float _bigRewardTime;
 
-    private float _timeUntilProjectile = 1.0f;
-    private float _projectileTime = 2.0f;
+    private float _timeUntilProjectile = 2;
+    public float _projectileTime;
 
     public static GameController instance;
 
@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         
             _timeUntilObstacle -= Time.deltaTime;
         if (_timeUntilObstacle <= 0) {
             GameObject obstacle = ObjectPool.SharedInstance.GetPooledObstacle();
@@ -39,6 +40,7 @@ public class GameController : MonoBehaviour
             _timeUntilObstacle = _obstacleTime;
         }
 
+        
         _timeUntilReward -= Time.deltaTime;
         if (_timeUntilReward <= 0) {
             GameObject reward = ObjectPool.SharedInstance.GetPooledReward();
@@ -48,6 +50,7 @@ public class GameController : MonoBehaviour
             _timeUntilReward = _rewardTime;
         }
 
+        
         _timeUntilBigReward -= Time.deltaTime;
         if (_timeUntilBigReward <= 0) {
             GameObject bigReward = ObjectPool.SharedInstance.GetPooledBigReward();
@@ -57,6 +60,7 @@ public class GameController : MonoBehaviour
             _timeUntilBigReward = _bigRewardTime;
         }
 
+        
         _timeUntilProjectile -= Time.deltaTime;
         if (_timeUntilProjectile <= 0) {
             GameObject projectile = ObjectPool.SharedInstance.GetPooledProjectile();

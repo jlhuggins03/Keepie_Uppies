@@ -5,7 +5,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
 
-    public float movementSpeed = 3;
+    public float movementSpeed;
 
     private float[] _fixedPositionX = new float[] {-1.5f, -1.0f, 0.5f, 0.0f, 0.5f, 1.0f, 1.5f, 2.0f, 2.5f, 3.0f};
     private Vector3 fallingDownLeft = new Vector3 (-.25f,-1f,0f);

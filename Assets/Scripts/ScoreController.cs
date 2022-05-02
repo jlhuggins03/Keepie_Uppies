@@ -14,7 +14,7 @@ public class ScoreController : MonoBehaviour
     public int food = 3; // functions as health (Reward)
     
     private float timer;    
-    private int scoreValue;
+    public  int scoreValue;
     private int scoreMultiplier = 1;
 
     private PlayerStats _playerStats;
@@ -74,6 +74,11 @@ public class ScoreController : MonoBehaviour
         if (food < 3)
         {
             food++;
+        }
+        if (food == 3)
+        {
+            scoreValue += 1 * food * scoreMultiplier;
+            timer = 0f;
         }
         healthText.text = "hp " + food.ToString();
     }
