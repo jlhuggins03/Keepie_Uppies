@@ -11,10 +11,11 @@ public class ScoreController : MonoBehaviour
     public Text scoreRetainer;
     public Text healthText;
     public Text scoreMultiplierText;
-    public int food = 3; // functions as health (Reward)
+    public int health = 3; // functions as health (Reward)
+    [SerializeField] private int maxhealth;
     
     private float timer;    
-    public  int scoreValue;
+    public  int currentScore;
     private int scoreMultiplier = 1;
 
     private PlayerStats _playerStats;
@@ -37,9 +38,9 @@ public class ScoreController : MonoBehaviour
 
         highScoreText.text = _playerStats.Score.ToString();
 
-        if (food == 0) 
+        if (health == 0) 
         {
-            scoreValue = int.Parse(scoreRetainer.text);
+            currentScore = int.Parse(scoreRetainer.text);
         }
     }
 
@@ -53,40 +54,40 @@ public class ScoreController : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > 1f) 
         {
-            scoreValue += 1 * food * scoreMultiplier;
+            currentScore += 1 * health * scoreMultiplier;
             timer = 0f;
         }
-        scoreText.text = scoreValue.ToString();
+        scoreText.text = currentScore.ToString();
     }
 
     public void SetHighScore() {
-        if (scoreValue > _playerStats.Score)
+        if (currentScore > _playerStats.Score)
         {
             _realm.Write(() => {
-                _playerStats.Score = scoreValue;
+                _playerStats.Score = currentScore;
             });
-            highScoreText.text = scoreValue.ToString();
+            highScoreText.text = currentScore.ToString();
         }
     }
 
     public void AddHealth()
     {
-        if (food < 3)
+        if (health < maxhealth)
         {
-            food++;
+            health++;
         }
-        if (food == 3)
+        if (health == maxhealth)
         {
-            scoreValue += 1 * food * scoreMultiplier;
+            currentScore += 1 * health * scoreMultiplier;
             timer = 0f;
         }
-        healthText.text = "hp " + food.ToString();
+        healthText.text = "hp " + health.ToString();
     }
 
     public void MinusHealth()
     {
-        food--;
-        healthText.text = "hp " + food.ToString();
+        health--;
+        healthText.text = "hp " + health.ToString();
     }
 
     public void AddMultiplier()

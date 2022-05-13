@@ -58,6 +58,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    void OnEnable()
+    {
+        me = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,7 +74,7 @@ public class AudioManager : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject);
+                // Destroy(gameObject);
             }
 
             firstPlayInt = PlayerPrefs.GetInt(FirstPlay);
@@ -101,7 +106,7 @@ public class AudioManager : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject);
+                // Destroy(gameObject);
             }
         } //end of if Scene is on Game Scene
     } // end of Start() Function

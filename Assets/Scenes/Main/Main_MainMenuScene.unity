@@ -1865,7 +1865,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: build 12.1
+  m_Text: build 15.1
 --- !u!222 &542754059
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3139,7 +3139,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1406720659}
         m_TargetAssemblyTypeName: ThemeManager, Assembly-CSharp
-        m_MethodName: SetTheme2
+        m_MethodName: SetTheme2BG
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4086,7 +4086,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1406720659}
         m_TargetAssemblyTypeName: ThemeManager, Assembly-CSharp
-        m_MethodName: SetTheme1
+        m_MethodName: SetTheme1BG
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5151,6 +5151,7 @@ MonoBehaviour:
   - {fileID: 1659675192}
   themePausedUI1: []
   themePausedUI2: []
+  GameOverUI: []
   objectTheme: []
 --- !u!1 &1444347653
 GameObject:

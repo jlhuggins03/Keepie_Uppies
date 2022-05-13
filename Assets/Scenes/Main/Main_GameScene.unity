@@ -184,7 +184,7 @@ RectTransform:
   - {fileID: 1192595876}
   - {fileID: 1294589041}
   m_Father: {fileID: 1790294123}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -224,7 +224,7 @@ RectTransform:
   - {fileID: 1604971187}
   - {fileID: 2053797370}
   m_Father: {fileID: 1790294123}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -534,7 +534,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 874219068}
         m_TargetAssemblyTypeName: ThemeManager, Assembly-CSharp
-        m_MethodName: SetTheme2
+        m_MethodName: SetTheme2BG
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -679,7 +679,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 874219068}
         m_TargetAssemblyTypeName: ThemeManager, Assembly-CSharp
-        m_MethodName: SetTheme1
+        m_MethodName: SetTheme1BG
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1173,7 +1173,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1651054649}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -1272,7 +1272,7 @@ RectTransform:
   m_Children:
   - {fileID: 219769102}
   m_Father: {fileID: 1790294123}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1558,7 +1558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenuUI:
-  - {fileID: 1651054649}
+  - {fileID: 0}
   - {fileID: 105347428}
 --- !u!1 &133910162
 GameObject:
@@ -2768,7 +2768,7 @@ GameObject:
   - component: {fileID: 255632288}
   - component: {fileID: 255632287}
   m_Layer: 5
-  m_Name: Score
+  m_Name: Game Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2785,12 +2785,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1651054650}
-  m_RootOrder: 1
+  m_Father: {fileID: 1790294123}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -335, y: 1025}
+  m_AnchoredPosition: {x: -834, y: -17}
   m_SizeDelta: {x: 800, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &255632287
@@ -2815,18 +2815,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 60
+    m_FontSize: 90
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 6
-    m_MaxSize: 60
+    m_MaxSize: 90
     m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'SCORE: 0'
+  m_Text: 0
 --- !u!222 &255632288
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4714,7 +4714,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1651054649}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -7028,7 +7028,7 @@ RectTransform:
   - {fileID: 1917250488}
   - {fileID: 1071602664}
   m_Father: {fileID: 1790294123}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7490,8 +7490,9 @@ MonoBehaviour:
   scoreRetainer: {fileID: 0}
   healthText: {fileID: 188623706}
   scoreMultiplierText: {fileID: 41065390}
-  food: 3
-  scoreValue: 0
+  health: 3
+  maxhealth: 5
+  currentScore: 0
 --- !u!4 &874219064
 Transform:
   m_ObjectHideFlags: 0
@@ -7542,9 +7543,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c192fc2c66a55047ab2286b0ab1359f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timeUntilObstacle: 2
   _obstacleTime: 5
+  _timeUntilReward: 5
   _rewardTime: 10
+  _timeUntilBigReward: 10
   _bigRewardTime: 15
+  _timeUntilProjectile: 2
   _projectileTime: 2
 --- !u!114 &874219067
 MonoBehaviour:
@@ -7558,6 +7563,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a7e650b032e2204c8f3b1cce4fec0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level_0_Max_Score: 50
+  level_1_Max_Score: 150
+  level_2_Max_Score: 250
+  level_3_Max_Score: 500
+  level_4_Max_Score: 1000
 --- !u!114 &874219068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7577,13 +7587,14 @@ MonoBehaviour:
   - {fileID: 38719608}
   - {fileID: 781577823}
   themePausedUI1:
-  - {fileID: 1651054649}
+  - {fileID: 0}
   - {fileID: 105347428}
   themePausedUI2:
   - {fileID: 1833241689}
   - {fileID: 41065388}
   - {fileID: 188623704}
   - {fileID: 748105992}
+  GameOverUI: []
   objectTheme: []
 --- !u!1 &878235546
 GameObject:
@@ -8877,8 +8888,9 @@ MonoBehaviour:
   scoreRetainer: {fileID: 1833241691}
   healthText: {fileID: 0}
   scoreMultiplierText: {fileID: 0}
-  food: 0
-  scoreValue: 0
+  health: 3
+  maxhealth: 0
+  currentScore: 0
 --- !u!1 &1027533671
 GameObject:
   m_ObjectHideFlags: 0
@@ -9036,7 +9048,7 @@ GameObject:
   - component: {fileID: 1058967495}
   - component: {fileID: 1058967494}
   m_Layer: 5
-  m_Name: HighScore
+  m_Name: GameHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9053,12 +9065,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1651054650}
-  m_RootOrder: 0
+  m_Father: {fileID: 1790294123}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -335, y: 1100}
+  m_AnchoredPosition: {x: -834, y: -199}
   m_SizeDelta: {x: 800, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1058967494
@@ -9074,7 +9086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9083,7 +9095,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 60
+    m_FontSize: 90
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -9094,7 +9106,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'HIGH SCORE: 0'
+  m_Text: HP 3
 --- !u!222 &1058967495
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12690,7 +12702,7 @@ RectTransform:
   - {fileID: 285649359}
   - {fileID: 1020527647}
   m_Father: {fileID: 1790294123}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14388,8 +14400,9 @@ MonoBehaviour:
   scoreRetainer: {fileID: 1833241691}
   healthText: {fileID: 0}
   scoreMultiplierText: {fileID: 0}
-  food: 0
-  scoreValue: 0
+  health: 3
+  maxhealth: 0
+  currentScore: 0
 --- !u!1 &1564749251
 GameObject:
   m_ObjectHideFlags: 0
@@ -14877,7 +14890,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 874219068}
         m_TargetAssemblyTypeName: ThemeManager, Assembly-CSharp
-        m_MethodName: SetTheme1
+        m_MethodName: SetTheme1BG
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15487,44 +15500,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648621997}
   m_CullTransparentMesh: 1
---- !u!1 &1651054649
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1651054650}
-  m_Layer: 5
-  m_Name: Score Section
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1651054650
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651054649}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1058967493}
-  - {fileID: 255632286}
-  - {fileID: 1859170559}
-  m_Father: {fileID: 1790294123}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1673202284
 GameObject:
   m_ObjectHideFlags: 0
@@ -16403,7 +16378,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1651054650}
+  - {fileID: 255632286}
+  - {fileID: 1859170559}
+  - {fileID: 1058967493}
   - {fileID: 105347432}
   - {fileID: 26669889}
   - {fileID: 2007535083}
@@ -16695,7 +16672,7 @@ RectTransform:
   - {fileID: 1067158582}
   - {fileID: 624969967}
   m_Father: {fileID: 1790294123}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16883,7 +16860,7 @@ GameObject:
   - component: {fileID: 1859170561}
   - component: {fileID: 1859170560}
   m_Layer: 5
-  m_Name: Rewards
+  m_Name: GameScoreMultiplier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16900,12 +16877,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1651054650}
-  m_RootOrder: 2
+  m_Father: {fileID: 1790294123}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -335, y: 950}
+  m_AnchoredPosition: {x: -834, y: -107}
   m_SizeDelta: {x: 800, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1859170560
@@ -16921,7 +16898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8773585, g: 0.7572283, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -16930,11 +16907,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 60
+    m_FontSize: 90
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 6
-    m_MaxSize: 60
+    m_MaxSize: 90
     m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -18662,7 +18639,7 @@ RectTransform:
   - {fileID: 1873992270}
   - {fileID: 373161095}
   m_Father: {fileID: 1790294123}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -18968,7 +18945,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 874219068}
         m_TargetAssemblyTypeName: ThemeManager, Assembly-CSharp
-        m_MethodName: SetTheme2
+        m_MethodName: SetTheme2BG
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

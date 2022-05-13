@@ -206,7 +206,7 @@ public class Player : MonoBehaviour
         }
 
         // No lives remaining
-        if (score.food == 0) {
+        if (score.health == 0) {
             EndGame();
         }
 

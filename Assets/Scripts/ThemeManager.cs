@@ -12,20 +12,26 @@ public class ThemeManager : MonoBehaviour
     private static readonly string firstPlay = "firstPlay";
     private static readonly string BGPref = "BGPref";
     private static readonly string ObjPref = "ObjPref";
-    private int firstPlayInt,BGInt, ObjInt;
+    private int firstPlayInt;
+    private int BGInt = 1;
+    private int ObjInt = 1;
+
     public static ThemeManager me;
 
+    //Background Theme Items
     public GameObject[] backGroundTheme;
     //private GameObject oldBGTheme, newBGTheme;
-    private GameObject theme1, theme2;
+    private GameObject theme1BG, theme2BG;
 
     public GameObject[] themesMenu;
     //private GameObject oldThemeMenu, newThemeMenu;
     private GameObject themeMenu1, themeMenu2;
 
-
     public GameObject[] themePausedUI1, themePausedUI2; // UI that shoudld be disabled because we are in game pause
 
+    public GameObject[] GameOverUI;
+
+    //Object Theme Items
     public GameObject[] objectTheme;
     
     
@@ -44,10 +50,8 @@ public class ThemeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //BGInt = 1;
-        
-        theme1 = backGroundTheme[0]; 
-        theme2 = backGroundTheme[1];
+        theme1BG = backGroundTheme[0]; 
+        theme2BG = backGroundTheme[1];
         themeMenu1 = themesMenu[0];
         themeMenu2 = themesMenu[1];
 
@@ -80,11 +84,11 @@ public class ThemeManager : MonoBehaviour
 
             if(BGInt == 1)
             {
-                theme1.SetActive(true); 
+                theme1BG.SetActive(true); 
             }
             else if(BGInt == 2)
             {
-                theme2.SetActive(true); 
+                theme2BG.SetActive(true); 
             }
         }//end of if Scene is on Main Menu Scene
         else if(SceneManager.GetActiveScene().buildIndex == 1) //if on Game Scene
@@ -101,11 +105,11 @@ public class ThemeManager : MonoBehaviour
 
             if(BGInt == 1)
             {
-                theme1.SetActive(true); 
+                theme1BG.SetActive(true); 
             }
             else if(BGInt == 2)
             {
-                theme2.SetActive(true); 
+                theme2BG.SetActive(true); 
             }
         } //end of if Scene is on Game Scene
 
@@ -137,31 +141,31 @@ public class ThemeManager : MonoBehaviour
         }
     }
 
-    public void SetTheme1()
+    public void SetTheme1BG()// this function is only used by the buttons in the themes menu
     {
-        theme2.SetActive(false);
+        theme2BG.SetActive(false);
         themeMenu2.SetActive(false);
 
         for (int i = 0; i < themePausedUI1.Length; i++)
         {
             themePausedUI1[i].SetActive(false);
         }
-        theme1.SetActive(true);
+        theme1BG.SetActive(true);
         themeMenu1.SetActive(true);
 
         BGInt = 1;
     }
 
-    public void SetTheme2()
+    public void SetTheme2BG() // This function is only used by the buttons in the themes menu
     {
-        theme1.SetActive(false);
+        theme1BG.SetActive(false);
         themeMenu1.SetActive(false);
         
         for (int i = 0; i < themePausedUI2.Length; i++)
         {
             themePausedUI2[i].SetActive(false);
         }
-        theme2.SetActive(true);
+        theme2BG.SetActive(true);
         themeMenu2.SetActive(true);
 
         BGInt = 2;
@@ -201,12 +205,12 @@ public class ThemeManager : MonoBehaviour
     //     newThemeMenu.SetActive(true);
     // }
 
-    // public void SetTheme1()
+    // public void SetTheme1BG()
     // {
     //     SetTheme(backGroundTheme[0], backGroundTheme, themesMenu[0], themesMenu);
     // }
 
-    // public void SetTheme2()
+    // public void SetTheme2BG()
     // {
     //     SetTheme(backGroundTheme[1], backGroundTheme, themesMenu[1], themesMenu);
     // }

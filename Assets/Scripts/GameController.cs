@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-
-    private float _timeUntilObstacle = 2; //counts down from set timer
+    [SerializeField] private float _timeUntilObstacle = 2; //counts down from set timer
     public float _obstacleTime;// sets the time for the obstacle to start from
 
-    private float _timeUntilReward = 5;
+    [SerializeField] private float _timeUntilReward = 5;
     public float _rewardTime;
 
-    private float _timeUntilBigReward = 10;
+    [SerializeField] private float _timeUntilBigReward = 10;
     public float _bigRewardTime;
 
-    private float _timeUntilProjectile = 2;
+    [SerializeField] private float _timeUntilProjectile = 2;
     public float _projectileTime;
 
     public static GameController instance;
 
+    
     // Start is called before the first frame update
     void Start()
     {

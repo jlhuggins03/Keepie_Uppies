@@ -14,10 +14,17 @@ public class DifficultyController : MonoBehaviour
 
     private int difficultyState = 0;
 
+
+    [SerializeField]private int level_0_Max_Score;
+    [SerializeField]private int level_1_Max_Score;
+    [SerializeField]private int level_2_Max_Score;
+    [SerializeField]private int level_3_Max_Score;
+    [SerializeField]private int level_4_Max_Score;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
 
         //Test to see if Script Works
         // Debug.Log("Obstacle Pool Size: " + poolsOfThings.obstaclePoolSize);
@@ -37,14 +44,16 @@ public class DifficultyController : MonoBehaviour
         bigRewardSpeed = FindObjectOfType<BigReward>();;
         obstacleSpeed = FindObjectOfType<Obstacle>();;
 
-        if (playerScore.scoreValue >= 0 && playerScore.scoreValue < 50 && difficultyState == 0)
+        if (playerScore.currentScore >= 0 && playerScore.currentScore < level_0_Max_Score && difficultyState == 0)
         {
-            
-            //set the pool size
-            poolsOfThings.obstaclePoolSize = 5;      
-            poolsOfThings.rewardPoolSize = 2;
-            poolsOfThings.bigRewardPoolSize = 2;
-            poolsOfThings.projectilePoolSize = 5; 
+
+            //Level 1 Difficulty
+
+            //set the max pool size
+            poolsOfThings.obstaclePoolSize = 7;      
+            poolsOfThings.rewardPoolSize = 5;
+            poolsOfThings.bigRewardPoolSize = 3;
+            poolsOfThings.projectilePoolSize = 7; 
             poolsOfThings.UpdateList();
 
             //set spawn rate times
@@ -56,10 +65,9 @@ public class DifficultyController : MonoBehaviour
             difficultyState = 1;
         }
 
-        if (playerScore.scoreValue > 50 && playerScore.scoreValue < 150 && difficultyState == 1)
+        if (playerScore.currentScore > level_0_Max_Score && playerScore.currentScore < level_1_Max_Score && difficultyState == 1)
         {
-            poolsOfThings.UpdateList();
-   
+            //Level 2 Difficulty   
             //set spawn rate times
             timesOfItems._obstacleTime = 3.5f;
             timesOfItems._rewardTime = 10.0f;
@@ -75,10 +83,9 @@ public class DifficultyController : MonoBehaviour
             difficultyState = 2;
         }
 
-        if (playerScore.scoreValue > 150 && playerScore.scoreValue < 250 && difficultyState == 2)
+        if (playerScore.currentScore > level_1_Max_Score && playerScore.currentScore < level_2_Max_Score && difficultyState == 2)
         {
-            poolsOfThings.UpdateList();
-
+            //Level 3 Difficulty
 
             //set spawn rate times
             timesOfItems._obstacleTime = 2.5f;
@@ -89,13 +96,9 @@ public class DifficultyController : MonoBehaviour
             difficultyState = 3;
         }
 
-        if (playerScore.scoreValue > 250 && playerScore.scoreValue < 500 && difficultyState == 3)
+        if (playerScore.currentScore > level_2_Max_Score && playerScore.currentScore < level_3_Max_Score && difficultyState == 3)
         {
-            //set the pool size
-            poolsOfThings.obstaclePoolSize = 10;      
-            poolsOfThings.projectilePoolSize = 10; 
-            poolsOfThings.UpdateList();
-
+            //Level 4 Difficulty
    
             //set spawn rate times
             timesOfItems._obstacleTime = 1.5f;
@@ -106,14 +109,10 @@ public class DifficultyController : MonoBehaviour
             difficultyState = 4;
         }
 
-        if (playerScore.scoreValue > 500 && playerScore.scoreValue < 1000 && difficultyState == 4)
+        if (playerScore.currentScore > level_3_Max_Score && playerScore.currentScore < level_4_Max_Score && difficultyState == 4)
         {
-            //set the pool size
-            poolsOfThings.obstaclePoolSize = 10;      
-            poolsOfThings.projectilePoolSize = 10; 
-            poolsOfThings.UpdateList();
-
-   
+            //Level 5 Difficulty
+               
             //set spawn rate times
             timesOfItems._obstacleTime = 1.0f;
             timesOfItems._rewardTime = 2.50f;
