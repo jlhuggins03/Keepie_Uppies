@@ -677,6 +677,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 905882395}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: pauseGameMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 874219068}
         m_TargetAssemblyTypeName: ThemeManager, Assembly-CSharp
         m_MethodName: SetTheme1BG
@@ -1161,22 +1173,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 105347428}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 132313773}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1212,6 +1212,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1564749253}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: pauseGameMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 874219063}
+        m_TargetAssemblyTypeName: ScoreController, Assembly-CSharp
+        m_MethodName: SaveScore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1268,7 +1280,7 @@ RectTransform:
   m_GameObject: {fileID: 105347428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.5, z: 1}
   m_Children:
   - {fileID: 219769102}
   m_Father: {fileID: 1790294123}
@@ -1276,7 +1288,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120, y: -120}
+  m_AnchoredPosition: {x: 130, y: -132.24}
   m_SizeDelta: {x: 154.84308, y: 133.52454}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &116298211
@@ -1558,7 +1570,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenuUI:
-  - {fileID: 0}
+  - {fileID: 255632285}
+  - {fileID: 1859170558}
+  - {fileID: 1058967492}
   - {fileID: 105347428}
 --- !u!1 &133910162
 GameObject:
@@ -1706,7 +1720,7 @@ GameObject:
   - component: {fileID: 141006938}
   - component: {fileID: 141006937}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Black Opaque BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1721,7 +1735,7 @@ RectTransform:
   m_GameObject: {fileID: 141006935}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 1409099017}
   m_RootOrder: 0
@@ -2790,8 +2804,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -834, y: -17}
-  m_SizeDelta: {x: 800, y: 200}
+  m_AnchoredPosition: {x: -267.5, y: -17}
+  m_SizeDelta: {x: 233.5, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &255632287
 MonoBehaviour:
@@ -3137,7 +3151,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.390686, y: 150}
+  m_AnchoredPosition: {x: 7.390686, y: 46}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &285649360
@@ -3162,10 +3176,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Swipe Up - Move Up
 
-    Swipe Left - Move Left
 
-    Swipe Right - Move
-    Right'
+    Swipe Down - Move Down
+
+
+    Swipe Left - Move
+    Left
+
+
+    Swipe Right - Move Right'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3409,8 +3428,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5.0000305, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: -59.569, y: 0}
+  m_SizeDelta: {x: -127.1515, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &337038382
 GameObject:
@@ -3581,7 +3600,7 @@ GameObject:
   - component: {fileID: 340951669}
   - component: {fileID: 340951668}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Black Opaque BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3596,7 +3615,7 @@ RectTransform:
   m_GameObject: {fileID: 340951666}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 38719609}
   m_RootOrder: 0
@@ -4714,10 +4733,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 132313773}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: Resume
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5365,7 +5384,7 @@ GameObject:
   - component: {fileID: 568061181}
   - component: {fileID: 568061180}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Black Opaque BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5380,7 +5399,7 @@ RectTransform:
   m_GameObject: {fileID: 568061178}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 1838229567}
   m_RootOrder: 0
@@ -6613,7 +6632,7 @@ GameObject:
   - component: {fileID: 680883158}
   - component: {fileID: 680883157}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Black Opaque BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6909,6 +6928,18 @@ MonoBehaviour:
       - m_Target: {fileID: 905882395}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: pauseGameMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 874219063}
+        m_TargetAssemblyTypeName: ScoreController, Assembly-CSharp
+        m_MethodName: SaveScore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7487,7 +7518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highScoreText: {fileID: 1457480697}
   scoreText: {fileID: 1833241691}
-  scoreRetainer: {fileID: 0}
+  scoreRetainer: {fileID: 1833241691}
   healthText: {fileID: 188623706}
   scoreMultiplierText: {fileID: 41065390}
   health: 3
@@ -7563,6 +7594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a7e650b032e2204c8f3b1cce4fec0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rampingSpeed: 0
   level_0_Max_Score: 50
   level_1_Max_Score: 150
   level_2_Max_Score: 250
@@ -7587,7 +7619,9 @@ MonoBehaviour:
   - {fileID: 38719608}
   - {fileID: 781577823}
   themePausedUI1:
-  - {fileID: 0}
+  - {fileID: 255632285}
+  - {fileID: 1859170558}
+  - {fileID: 1058967492}
   - {fileID: 105347428}
   themePausedUI2:
   - {fileID: 1833241689}
@@ -9070,8 +9104,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -834, y: -199}
-  m_SizeDelta: {x: 800, y: 200}
+  m_AnchoredPosition: {x: -267.50458, y: -199}
+  m_SizeDelta: {x: 233.5046, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1058967494
 MonoBehaviour:
@@ -9843,8 +9877,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 117, y: -280.3}
-  m_SizeDelta: {x: 623.7614, y: 122.3524}
+  m_AnchoredPosition: {x: 81.7288, y: -292}
+  m_SizeDelta: {x: 553.2158, y: 122.3524}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1080434567
 MonoBehaviour:
@@ -11105,8 +11139,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5.0000305, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: -59.8029, y: 0}
+  m_SizeDelta: {x: -127.6107, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1209898529
 GameObject:
@@ -12080,8 +12114,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -55.800507, y: 0}
+  m_SizeDelta: {x: -111.6009, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1318518581
 MonoBehaviour:
@@ -13041,8 +13075,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -55.5623, y: 0}
+  m_SizeDelta: {x: -111.1245, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1435526532
 MonoBehaviour:
@@ -15173,8 +15207,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: -55.5623, y: 0}
+  m_SizeDelta: {x: -127.1515, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1620244331
 GameObject:
@@ -15347,8 +15381,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 117, y: 219.3}
-  m_SizeDelta: {x: 623.7614, y: 122.3524}
+  m_AnchoredPosition: {x: 81.7288, y: 213}
+  m_SizeDelta: {x: 553.2158, y: 122.3524}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1625818686
 MonoBehaviour:
@@ -16211,8 +16245,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: -55.800507, y: 0}
+  m_SizeDelta: {x: -127.6107, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1782936100
 GameObject:
@@ -16425,12 +16459,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1125, y: 2436}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -16882,8 +16916,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -834, y: -107}
-  m_SizeDelta: {x: 800, y: 200}
+  m_AnchoredPosition: {x: -267.5, y: -107}
+  m_SizeDelta: {x: 233.5, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1859170560
 MonoBehaviour:
@@ -16939,7 +16973,7 @@ GameObject:
   - component: {fileID: 1861592539}
   - component: {fileID: 1861592538}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Black Opaque BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16954,7 +16988,7 @@ RectTransform:
   m_GameObject: {fileID: 1861592536}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 761035760}
   m_RootOrder: 0
@@ -18934,6 +18968,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1564749253}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: playButtonSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1564749253}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: pauseGameMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

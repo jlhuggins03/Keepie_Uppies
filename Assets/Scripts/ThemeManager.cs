@@ -12,7 +12,7 @@ public class ThemeManager : MonoBehaviour
     private static readonly string firstPlay = "firstPlay";
     private static readonly string BGPref = "BGPref";
     private static readonly string ObjPref = "ObjPref";
-    private int firstPlayInt;
+    private int firstPlayIntBG;
     private int BGInt = 1;
     private int ObjInt = 1;
 
@@ -66,9 +66,9 @@ public class ThemeManager : MonoBehaviour
                 Destroy(gameObject);
             }
 
-            firstPlayInt = PlayerPrefs.GetInt(firstPlay);
+            firstPlayIntBG = PlayerPrefs.GetInt(firstPlay);
 
-            if(firstPlayInt == 0) //setting BG on inital play
+            if(firstPlayIntBG == 0) //setting BG on inital play
             {
                 BGInt = 1; //BG is set to the first selection
                 ObjInt = 1; //Objects are set to first selection

@@ -13,7 +13,9 @@ public class DifficultyController : MonoBehaviour
     Obstacle obstacleSpeed;
 
     private int difficultyState = 0;
+    private int speedDifficulty = 0;
 
+    public bool rampingSpeed;
 
     [SerializeField]private int level_0_Max_Score;
     [SerializeField]private int level_1_Max_Score;
@@ -39,10 +41,10 @@ public class DifficultyController : MonoBehaviour
         playerScore = FindObjectOfType<ScoreController>();
         poolsOfThings = FindObjectOfType<ObjectPool>();
         timesOfItems = FindObjectOfType<GameController>();
-        rewardSpeed = FindObjectOfType<Reward>();;
-        projectileSpeed = FindObjectOfType<Projectile>();;
-        bigRewardSpeed = FindObjectOfType<BigReward>();;
-        obstacleSpeed = FindObjectOfType<Obstacle>();;
+        rewardSpeed = FindObjectOfType<Reward>();
+        projectileSpeed = FindObjectOfType<Projectile>();
+        bigRewardSpeed = FindObjectOfType<BigReward>();
+        obstacleSpeed = FindObjectOfType<Obstacle>();
 
         if (playerScore.currentScore >= 0 && playerScore.currentScore < level_0_Max_Score && difficultyState == 0)
         {
@@ -55,6 +57,18 @@ public class DifficultyController : MonoBehaviour
             poolsOfThings.bigRewardPoolSize = 3;
             poolsOfThings.projectilePoolSize = 7; 
             poolsOfThings.UpdateList();
+
+            if(rampingSpeed == true && speedDifficulty == 0)
+            {
+            //set speed rates
+            //rewardSpeed.movementSpeed = 6;
+            projectileSpeed.movementSpeed = 6;
+            //bigRewardSpeed.movementSpeed = 6;
+            //obstacleSpeed.movementSpeed = 6;
+
+            speedDifficulty = 1;
+            }
+           
 
             //set spawn rate times
             timesOfItems._obstacleTime = 5.0f;
@@ -74,11 +88,7 @@ public class DifficultyController : MonoBehaviour
             timesOfItems._bigRewardTime = 20.0f;
             timesOfItems._projectileTime = 2.0f;
 
-            //set speed rates
-            // rewardSpeed.movementSpeed = 6;
-            // projectileSpeed.movementSpeed = 6;
-            // bigRewardSpeed.movementSpeed = 6;
-            // obstacleSpeed.movementSpeed = 6;
+            
 
             difficultyState = 2;
         }

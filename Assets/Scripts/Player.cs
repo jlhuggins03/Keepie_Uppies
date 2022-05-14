@@ -208,6 +208,7 @@ public class Player : MonoBehaviour
         // No lives remaining
         if (score.health == 0) {
             EndGame();
+            
         }
 
         // // if player is below a threshold, for some other reason, end the game

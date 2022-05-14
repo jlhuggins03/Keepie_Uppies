@@ -13,6 +13,8 @@ public class ScoreController : MonoBehaviour
     public Text scoreMultiplierText;
     public int health = 3; // functions as health (Reward)
     [SerializeField] private int maxhealth;
+
+    private static readonly string currentGameScore;
     
     private float timer;    
     public  int currentScore;
@@ -20,6 +22,7 @@ public class ScoreController : MonoBehaviour
 
     private PlayerStats _playerStats;
     private Realm _realm;
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +43,9 @@ public class ScoreController : MonoBehaviour
 
         if (health == 0) 
         {
+            Debug.Log("Score Controller Says Health is 0");
             currentScore = int.Parse(scoreRetainer.text);
+            currentScore = PlayerPrefs.GetInt(currentGameScore);
         }
     }
 
@@ -58,6 +63,10 @@ public class ScoreController : MonoBehaviour
             timer = 0f;
         }
         scoreText.text = currentScore.ToString();
+
+
+        //Debug.Log("currentScore: " + currentScore);
+        //Debug.Log("scoreRetainer: " + int.Parse(scoreRetainer.text));
     }
 
     public void SetHighScore() {
@@ -100,5 +109,12 @@ public class ScoreController : MonoBehaviour
     {
         scoreMultiplier = 1;
         scoreMultiplierText.text = "x " + scoreMultiplier.ToString();
+    }
+
+    public void SaveScore()
+    {
+        PlayerPrefs.SetInt(currentGameScore, currentScore); //save musicfloat to player prefs
+        Debug.Log("Score Saved to Player Prefs");
+
     }
 }
