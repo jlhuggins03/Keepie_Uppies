@@ -21,13 +21,19 @@ public class ThemeManager : MonoBehaviour
     //Background Theme Items
     public GameObject[] backGroundTheme;
     //private GameObject oldBGTheme, newBGTheme;
-    private GameObject theme1BG, theme2BG;
+    private GameObject theme1BG, theme2BG, theme3BG;
 
-    public GameObject[] themesMenu;
+    public GameObject[] themesMenu; // Themes Menu for each individual theme
     //private GameObject oldThemeMenu, newThemeMenu;
-    private GameObject themeMenu1, themeMenu2;
+    private GameObject themeMenu1, themeMenu2, themeMenu3;
 
-    public GameObject[] themePausedUI1, themePausedUI2; // UI that shoudld be disabled because we are in game pause
+    public GameObject[] themesMenuBGOptions; //Options for themes to switch, used to be disabled for changing Themes menu from bg to obj
+    //private GameObject bgOptionTitle,bgOption1, bgOption2, bgOption3;
+
+    public GameObject[] themesMenuObjOptions; //Options for themes to switch, used to be disabled for changing Themes menu from obj to  bg
+    //private GameObject objOptionTitle,objOption1, objOption2, objOption3;
+
+    public GameObject[] themePausedUI1, themePausedUI2, themePausedUI3; // UI that shoudld be disabled because we are in game pause
 
     public GameObject[] GameOverUI;
 
@@ -52,8 +58,11 @@ public class ThemeManager : MonoBehaviour
     {
         theme1BG = backGroundTheme[0]; 
         theme2BG = backGroundTheme[1];
+        theme3BG = backGroundTheme[2];
+
         themeMenu1 = themesMenu[0];
         themeMenu2 = themesMenu[1];
+        themeMenu3 = themesMenu[2];
 
        if(SceneManager.GetActiveScene().buildIndex == 0) //if on Main Menu Scene
         {
@@ -90,6 +99,11 @@ public class ThemeManager : MonoBehaviour
             {
                 theme2BG.SetActive(true); 
             }
+            else if(BGInt == 3)
+            {
+                theme3BG.SetActive(true); 
+            }
+            
         }//end of if Scene is on Main Menu Scene
         else if(SceneManager.GetActiveScene().buildIndex == 1) //if on Game Scene
         {
@@ -110,6 +124,10 @@ public class ThemeManager : MonoBehaviour
             else if(BGInt == 2)
             {
                 theme2BG.SetActive(true); 
+            }
+            else if(BGInt == 3)
+            {
+                theme3BG.SetActive(true); 
             }
         } //end of if Scene is on Game Scene
 
@@ -146,6 +164,9 @@ public class ThemeManager : MonoBehaviour
         theme2BG.SetActive(false);
         themeMenu2.SetActive(false);
 
+        theme3BG.SetActive(false);
+        themeMenu3.SetActive(false);
+
         for (int i = 0; i < themePausedUI1.Length; i++)
         {
             themePausedUI1[i].SetActive(false);
@@ -160,6 +181,9 @@ public class ThemeManager : MonoBehaviour
     {
         theme1BG.SetActive(false);
         themeMenu1.SetActive(false);
+
+        theme3BG.SetActive(false);
+        themeMenu3.SetActive(false);
         
         for (int i = 0; i < themePausedUI2.Length; i++)
         {
@@ -170,6 +194,51 @@ public class ThemeManager : MonoBehaviour
 
         BGInt = 2;
     }
+
+    public void SetTheme3BG() // This function is only used by the buttons in the themes menu
+    {
+        theme1BG.SetActive(false);
+        themeMenu1.SetActive(false);
+
+        theme2BG.SetActive(false);
+        themeMenu2.SetActive(false);
+        
+        for (int i = 0; i < themePausedUI3.Length; i++)
+        {
+            themePausedUI2[i].SetActive(false);
+        }
+        theme3BG.SetActive(true);
+        themeMenu3.SetActive(true);
+
+        BGInt = 3;
+    }
+
+    public void SwapToObjectsMenu()
+    {
+        for (int i = 0; i < themesMenuBGOptions.Length; i++)
+        {
+            themesMenuBGOptions[i].SetActive(false);
+        }
+
+        for (int i = 0; i < themesMenuObjOptions.Length; i++)
+        {
+            themesMenuObjOptions[i].SetActive(true);
+        }
+    }
+
+    public void SwapToBGMenu()
+    {
+         for (int i = 0; i < themesMenuBGOptions.Length; i++)
+        {
+            themesMenuBGOptions[i].SetActive(true);
+        }
+
+        for (int i = 0; i < themesMenuObjOptions.Length; i++)
+        {
+            themesMenuObjOptions[i].SetActive(false);
+        }
+    }
+    
     
     
     // void SetTheme(GameObject newTheme, GameObject[] themeList, GameObject newTMenu, GameObject[] themeMenuList)
