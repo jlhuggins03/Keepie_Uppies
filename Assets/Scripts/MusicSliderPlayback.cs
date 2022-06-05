@@ -22,6 +22,8 @@ public class MusicSliderPlayback : MonoBehaviour, IPointerUpHandler, IPointerDow
         if(SceneManager.GetActiveScene().buildIndex == 1)
         {
             AudioManager.me.pauseGameMusic();
-        }        
+        }     
+
+        AudioManager.me.SaveSoundSettings();   
     }
 }

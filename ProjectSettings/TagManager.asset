@@ -11,6 +11,7 @@ TagManager:
   - Big Reward
   - Dead Zone
   - Sky Zone
+  - Warning Zone
   layers:
   - Default
   - TransparentFX

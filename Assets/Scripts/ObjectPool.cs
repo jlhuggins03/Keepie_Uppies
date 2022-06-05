@@ -5,34 +5,69 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
 
-    public static ObjectPool SharedInstance;
+    public static ObjectPool me;
 
+    //Obsacle Variables
     public List<GameObject> pooledObstacles;
-    public GameObject obstacleToPool;
+    private GameObject obstacleToPool;
     public int obstaclePoolSize;
+    public float timeUntilObstacle; //counts down from set timer
+    public float obstacleTime;// sets the time for the obstacle to start from
 
+    //Reward Variables
     public List<GameObject> pooledRewards;
-    public GameObject rewardToPool;
+    private GameObject rewardToPool;
     public int rewardPoolSize;
+    public float timeUntilReward;
+    public float rewardTime;
 
+    //Big Reward Variables
     public List<GameObject> pooledBigRewards;
-    public GameObject bigRewardToPool;
+    private GameObject bigRewardToPool;
     public int bigRewardPoolSize;
+    public float timeUntilBigReward;
+    public float bigRewardTime;
 
+    //Projectile Variables
     public List<GameObject> pooledProjectiles;
-    public GameObject projectileToPool;
+    private GameObject projectileToPool;
     public int projectilePoolSize;
+    public float timeUntilProjectile;
+    public float projectileTime;
 
-    void Awake() {
-        SharedInstance = this;
+    void Awake()
+    {
+        me = this;
     }
+
+    // void Start()
+    // {
+
+    // }
 
     void OnEnable()
     {
         UpdateList();
     }
 
-    public void UpdateList(){
+    void Update()
+    {
+        timeUntilObstacle = obstacleTime;
+        timeUntilReward = rewardTime;
+        timeUntilBigReward = bigRewardTime;
+        timeUntilProjectile = projectileTime;
+    }
+
+    public void SetObjects(GameObject obstacle, GameObject reward, GameObject bigReward, GameObject projectile)
+    {
+        obstacleToPool = obstacle;
+        rewardToPool = reward;
+        bigRewardToPool = bigReward;
+        projectileToPool = projectile;
+    }
+
+    public void UpdateList()
+    {
 
         pooledObstacles = new List<GameObject>();
         GameObject tempObstacle;
@@ -69,8 +104,58 @@ public class ObjectPool : MonoBehaviour
         
     }
 
+    public void DeleteClonesFromHierarchy() // Deletes Items From Hierarchy
+    {
 
-    public GameObject GetPooledObstacle() {
+        for (int i = 0; i < obstaclePoolSize; i++) 
+        {
+            if (pooledObstacles[i].activeInHierarchy == false)
+            {
+                Destroy(pooledObstacles[i]);
+            }
+        }
+
+        for (int i = 0; i < rewardPoolSize; i++)
+        {
+            if (pooledRewards[i].activeInHierarchy == false)
+            {
+                Destroy(pooledRewards[i]);
+            }
+        }
+
+        for (int i = 0; i < bigRewardPoolSize; i++)
+        {
+            if (pooledBigRewards[i].activeInHierarchy == false)
+            {
+                Destroy(pooledBigRewards[i]);
+            }
+
+        }
+
+        for (int i = 0; i < projectilePoolSize; i++)
+        {
+            if (pooledProjectiles[i].activeInHierarchy == false)
+            {
+                Destroy(pooledProjectiles[i]);
+            }
+        }
+
+        Debug.Log("Objects in Pool List Have Been Deleted!");
+        Debug.Log("----------------------------------------------------------");
+
+    }
+
+    public void ResetPoolSize()
+    {
+        obstaclePoolSize = 0;
+        rewardPoolSize = 0;
+        bigRewardPoolSize = 0;
+        projectilePoolSize = 0;
+        UpdateList();
+    }
+
+    public GameObject GetPooledObstacle()
+    {
         for (int i = 0; i < obstaclePoolSize; i++) {
             if (pooledObstacles[i].activeInHierarchy == false) {
                 return pooledObstacles[i];
@@ -79,7 +164,8 @@ public class ObjectPool : MonoBehaviour
         return null;
     }
 
-    public GameObject GetPooledReward() {
+    public GameObject GetPooledReward()
+    {
         for (int i = 0; i < rewardPoolSize; i++) {
             if (pooledRewards[i].activeInHierarchy == false) {
                 return pooledRewards[i];
@@ -88,17 +174,18 @@ public class ObjectPool : MonoBehaviour
         return null;
     }
 
-        public GameObject GetPooledBigReward() {
-        for (int i = 0; i < bigRewardPoolSize; i++) {
-            if (pooledBigRewards[i].activeInHierarchy == false) {
-                return pooledBigRewards[i];
+    public GameObject GetPooledBigReward()
+    {
+            for (int i = 0; i < bigRewardPoolSize; i++) {
+                if (pooledBigRewards[i].activeInHierarchy == false) {
+                    return pooledBigRewards[i];
+                }
             }
-        }
-        return null;
-    }
+            return null;
+    }   
 
-
-    public GameObject GetPooledProjectile() {
+    public GameObject GetPooledProjectile()
+    {
         for (int i = 0; i < projectilePoolSize; i++) {
             if (pooledProjectiles[i].activeInHierarchy == false) {
                 return pooledProjectiles[i];
@@ -106,8 +193,4 @@ public class ObjectPool : MonoBehaviour
         }
         return null;
     }
-
-    
-
-
 }

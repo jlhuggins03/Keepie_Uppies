@@ -5,15 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public ScoreController score;
-    public AudioSource playOnTrigger;
-
-    public static GameObject playerinstance;
+    private int gameOverFlag = 0;
 
     public float[] lanes = new float[] { -3f, 0f, 3f }; // x position of each lane. note: it is exceeding world bounds in order to work properly?
     private int targetLane = 1; // middle lane
 
-    // public float superJumpMultiplier;
     private float gravity = 0.5f;
     private float jumpHeight = 1.5f;
     private float targetJump = 0f;
@@ -25,21 +21,9 @@ public class Player : MonoBehaviour
     private bool isJumping = false;
     private bool isFalling = false;
 
-    // private float skyZone = 4f;
-    // private float deadZone = -4f;
-
     private Vector3 fp;   //First touch position
     private Vector3 lp;   //Last touch position
     private float dragDistance;  //minimum distance for a swipe to be registered
-
-    public GameObject GameOverScene;
-
-    //UI things for player. !!This WILL need to be replaced once we determine how to get themes functioning
-    public GameObject UIHealth;
-    public GameObject UIScore;
-    public GameObject UIScoreMultiplyer;
-
-    public GameObject PauseButtonUI;
 
     // Allows Sprite to have multiple colliders
     [SerializeField]
@@ -49,11 +33,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameOverScene.SetActive(false);
-        PauseButtonUI.SetActive(true);
-        UIHealth.SetActive(true);
-        UIScore.SetActive(true);
-        UIScoreMultiplyer.SetActive(true);
 
         targetJump = transform.position.y + jumpHeight; // Initialize tartgetJump position.
 
@@ -65,12 +44,12 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Debug.Log("A key is held down");
+            //Debug.Log("A key is held down");
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            Debug.Log("D key is held down");
+            //Debug.Log("D key is held down");
         }
 
 
@@ -96,7 +75,7 @@ public class Player : MonoBehaviour
                 //Check if drag distance is greater than 10% of the screen height
                 if (Mathf.Abs(lp.x - fp.x) > dragDistance || Mathf.Abs(lp.y - fp.y) > dragDistance) //It's a drag
                 {
-                    Debug.Log("Drag registered");
+                    //Debug.Log("Drag registered");
 
                     //check if the drag is vertical or horizontal
                     if (Mathf.Abs(lp.x - fp.x) > Mathf.Abs(lp.y - fp.y))
@@ -105,7 +84,7 @@ public class Player : MonoBehaviour
                         if ((lp.x > fp.x)) // If the movement was to the right
                         {   
                             //Right swipe
-                            Debug.Log("Right Swipe");
+                            //Debug.Log("Right Swipe");
                             if (isSwappingLanes == false && targetLane < lanes.Length - 1.0)
                             {
                                 targetLane++;
@@ -116,7 +95,7 @@ public class Player : MonoBehaviour
                         else
                         {   
                             //Left swipe
-                            Debug.Log("Left Swipe");
+                            //Debug.Log("Left Swipe");
                             if (isSwappingLanes == false && targetLane > 0)
                             {
                                 targetLane--;
@@ -130,7 +109,7 @@ public class Player : MonoBehaviour
                         if (lp.y > fp.y) //If the movement was up
                         {   
                             //Up swipe
-                            Debug.Log("Up Swipe");
+                            //Debug.Log("Up Swipe");
                             targetJump = transform.position.y + jumpHeight; //set jump result location
                             isJumping = true; //do the jump
                             AudioManager.me.playPlayerMoveSFX(); // play the jump sound
@@ -139,7 +118,7 @@ public class Player : MonoBehaviour
                         else
                         {   
                             //Down swipe
-                            Debug.Log("Down Swipe");
+                            //Debug.Log("Down Swipe");
                             targetJump = transform.position.y - jumpHeight;
                             isJumping = true;
                             isFalling = true;
@@ -204,20 +183,50 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, 0.00f);
             isSwappingLanes = false;
         }
-
+    
+        if(GameController.me.cheatsAreEnabled == false)
+        {
         // No lives remaining
-        if (score.health == 0) {
-            EndGame();
-            
+            if (ScoreController.me.GetCurrentHealth() < 0 || ScoreController.me.GetCurrentHealth() == 0)
+            {
+
+                if(ScoreController.me.GetCurrentHealth() < 0 && gameOverFlag == 0)
+                {
+                    gameOverFlag = 1;
+                }
+                
+                if(gameOverFlag == 1)
+                {
+                    gameOverFlag = 2;
+                    EndGame();
+                    ScoreController.me.SetCurrentHealth(GameController.me.playerStartingHealth);
+                    Debug.Log("Health was Less than 0");
+                    
+                }
+
+                if(gameOverFlag == 0)
+                {
+                    EndGame();
+                    ScoreController.me.SetCurrentHealth(GameController.me.playerStartingHealth);
+                    Debug.Log("Health was 0");
+                }
+            }
         }
+
+
 
         // // if player is below a threshold, for some other reason, end the game
         // if (transform.position.y <= -2265.0f)
         // {
-        //     AudioManager.me.playObstacleHitSFX();
+        //     AudioManager.me.playPlayerGetsHitSFX();
         //     EndGame();
         // }
     }
+
+
+
+    //End of Update Function
+
 
     /* Player collision */
     void OnTriggerEnter2D(Collider2D collider)
@@ -227,56 +236,70 @@ public class Player : MonoBehaviour
         {
             isJumping = false;
         }
+        else if (collider.gameObject.tag == "Warning Zone")
+        {
+            AudioManager.me.playSingleDeadZoneSFX();
+        }
         else if (collider.gameObject.tag == "Dead Zone")
         {
-            AudioManager.me.playObstacleHitSFX();
+            AudioManager.me.playPlayerGetsHitSFX();
             EndGame();
+            ScoreController.me.SetCurrentHealth(GameController.me.playerStartingHealth);
         }
         
 
         // Player collisions with objects
         if (collider.gameObject.tag == "Obstacle")
         {
-            AudioManager.me.playObstacleHitSFX();
-            EndGame();
+            AudioManager.me.playPlayerGetsHitSFX();
+            // for(int i = 0; i<ScoreController.me.maxhealth; i++)
+            // {
+            //     ScoreController.me.MinusHealth();
+            // }
+            ScoreController.me.MinusHealth();
+            ScoreController.me.MinusHealth();
+            ScoreController.me.MinusHealth();
+            ScoreController.me.MinusHealth();
+            ScoreController.me.MinusHealth();
+
+            ScoreController.me.ResetMultiplier();
+
+            //EndGame();
         }
         if (collider.gameObject.tag == "Projectile")
         {
-            AudioManager.me.playObstacleHitSFX();
-            score.MinusHealth();
-            score.ResetMultiplier();
+            AudioManager.me.playPlayerGetsHitSFX();
+            ScoreController.me.MinusHealth();
+            ScoreController.me.ResetMultiplier();
         }
         else if (collider.gameObject.tag == "Reward")
         {
-            Debug.Log("Food Collected!");
+            //Debug.Log("Food Collected!");
             AudioManager.me.playRewardSFX();
-            score.AddHealth();
+            ScoreController.me.AddHealth();
         }
         else if (collider.gameObject.tag == "Big Reward")
         {
-            Debug.Log("Big Reward Collected!");
+            //Debug.Log("Big Reward Collected!");
             AudioManager.me.playRewardSFX();
-            score.AddMultiplier();
+            ScoreController.me.AddMultiplier();
         }
     }
     
     /* Resolve game over */
-    void EndGame()
+    public void EndGame()
     {
-        Debug.Log("Game Over!");
-        score.SetHighScore();
         Time.timeScale = 0f;
-        GameOverScene.SetActive(true);
-        PauseButtonUI.SetActive(false);
-        UIHealth.SetActive(false);
-        UIScore.SetActive(false);
-        UIScoreMultiplyer.SetActive(false);
+        ThemeManager.me.DisplayGameOver();
         AudioManager.me.pauseGameMusic();
-    }
 
-    public void RestartScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //Debug.Log("Game Over!");
+        if(GameController.me.godMode == false && GameController.me.bulletHellMode == false)//Set The PLayerStats High Score
+        {
+            ScoreController.me.SetHighScores();
+        }
+
+        ScoreBoard.me.SetHighScores(ScoreController.me.currentScore);// Set The Scoreboard HighScore
     }
 
     //Collision Animation Marker

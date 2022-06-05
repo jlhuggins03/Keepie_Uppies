@@ -23,6 +23,8 @@ public class SFXSliderPlayback : MonoBehaviour, IPointerUpHandler, IPointerDownH
         else
         {
             AudioManager.me.playButtonSFX();
-        }        
+        }   
+
+        AudioManager.me.SaveSoundSettings();     
     }    
 }

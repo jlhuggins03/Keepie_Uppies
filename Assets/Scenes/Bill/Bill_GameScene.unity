@@ -153,7 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7420f4e5c5a464194e7221d39df42e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseMenuUI: {fileID: 26669886}
+  PauseMenuUI:
+  - {fileID: 0}
 --- !u!114 &26669888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3771,7 +3772,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7420f4e5c5a464194e7221d39df42e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseMenuUI: {fileID: 356328607}
+  PauseMenuUI:
+  - {fileID: 0}
 --- !u!1 &358080047
 GameObject:
   m_ObjectHideFlags: 0
@@ -3813,7 +3815,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3195ec06a412de64a8b24b2a198541d0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 51818c9a031cda64ca37ee798814f72d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -7690,12 +7692,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd43c343b5d66f4180cfffdf3d34692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highScoreText: {fileID: 1457480697}
   scoreText: {fileID: 1833241691}
-  scoreRetainer: {fileID: 0}
   healthText: {fileID: 188623706}
   scoreMultiplierText: {fileID: 41065390}
-  food: 3
+  health: 3
+  maxhealth: 0
+  highestScoreText: {fileID: 0}
+  gameOverScoreText: {fileID: 0}
+  highScoreText1: {fileID: 0}
+  highScoreText2: {fileID: 0}
+  highScoreText3: {fileID: 0}
+  highScoreText4: {fileID: 0}
+  highScoreText5: {fileID: 0}
+  currentScore: 0
 --- !u!4 &874219064
 Transform:
   m_ObjectHideFlags: 0
@@ -7746,6 +7755,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c192fc2c66a55047ab2286b0ab1359f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timeUntilObstacle: 2
+  _obstacleTime: 0
+  _timeUntilReward: 5
+  _rewardTime: 0
+  _timeUntilBigReward: 10
+  _bigRewardTime: 0
+  _timeUntilProjectile: 2
+  _projectileTime: 0
 --- !u!1 &878235546
 GameObject:
   m_ObjectHideFlags: 0
@@ -8294,6 +8311,7 @@ MonoBehaviour:
   sFXSlider: {fileID: 1625818686}
   musicSlider: {fileID: 1080434568}
   musicAudio: {fileID: 1922839366}
+  singleDeadZoneSFX: {fileID: 0}
   rewardSFX: {fileID: 704650974}
   rewardSFXAudioSource: []
   buttonSFX: {fileID: 1597138104}
@@ -8304,8 +8322,6 @@ MonoBehaviour:
   obstacleSpawnSFXAudioSource: []
   playerMoveSFX: {fileID: 178148021}
   playerMoveSFXAudioSource: []
-  deadZoneSFX: {fileID: 1611005694}
-  deadZoneSFXAudioSource: []
   countDownSFX: {fileID: 1535584413}
   countDownSFXAudioSource: []
 --- !u!1 &916744719
@@ -8633,7 +8649,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2ec78847f3af99e48a77231c69a35dec, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 96971550b3aa65f44bee4ba2dedd3865, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -8982,7 +8998,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7420f4e5c5a464194e7221d39df42e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseMenuUI: {fileID: 1026974635}
+  PauseMenuUI:
+  - {fileID: 0}
 --- !u!114 &1026974637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9033,12 +9050,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd43c343b5d66f4180cfffdf3d34692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highScoreText: {fileID: 1457480697}
   scoreText: {fileID: 249866435}
-  scoreRetainer: {fileID: 1833241691}
   healthText: {fileID: 0}
   scoreMultiplierText: {fileID: 0}
-  food: 0
+  health: 3
+  maxhealth: 0
+  highestScoreText: {fileID: 0}
+  gameOverScoreText: {fileID: 0}
+  highScoreText1: {fileID: 0}
+  highScoreText2: {fileID: 0}
+  highScoreText3: {fileID: 0}
+  highScoreText4: {fileID: 0}
+  highScoreText5: {fileID: 0}
+  currentScore: 0
 --- !u!1 &1027533671
 GameObject:
   m_ObjectHideFlags: 0
@@ -10896,7 +10920,7 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1150546330
@@ -12759,9 +12783,14 @@ MonoBehaviour:
   backGroundTheme:
   - {fileID: 132313771}
   - {fileID: 1512507984}
+  UIVersions: []
   themesMenu:
   - {fileID: 38719608}
   - {fileID: 781577823}
+  themePausedUI1: []
+  themePausedUI2: []
+  themePausedUI3: []
+  GameOverUI: []
   objectTheme: []
 --- !u!1 &1402126755
 GameObject:
@@ -14409,7 +14438,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: de1c8fefb5b680446a06ea7610ba2ae6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ccbee11e52a8f1049a0aa157dd9e37ff, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -14545,12 +14574,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd43c343b5d66f4180cfffdf3d34692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highScoreText: {fileID: 1457480697}
   scoreText: {fileID: 249866435}
-  scoreRetainer: {fileID: 1833241691}
   healthText: {fileID: 0}
   scoreMultiplierText: {fileID: 0}
-  food: 0
+  health: 3
+  maxhealth: 0
+  highestScoreText: {fileID: 0}
+  gameOverScoreText: {fileID: 0}
+  highScoreText1: {fileID: 0}
+  highScoreText2: {fileID: 0}
+  highScoreText3: {fileID: 0}
+  highScoreText4: {fileID: 0}
+  highScoreText5: {fileID: 0}
+  currentScore: 0
 --- !u!1 &1564749251
 GameObject:
   m_ObjectHideFlags: 0
@@ -14598,6 +14634,7 @@ MonoBehaviour:
   sFXSlider: {fileID: 1917250490}
   musicSlider: {fileID: 1071602663}
   musicAudio: {fileID: 1277159083}
+  singleDeadZoneSFX: {fileID: 0}
   rewardSFX: {fileID: 173160484}
   rewardSFXAudioSource: []
   buttonSFX: {fileID: 1330266133}
@@ -14608,8 +14645,6 @@ MonoBehaviour:
   obstacleSpawnSFXAudioSource: []
   playerMoveSFX: {fileID: 1673202284}
   playerMoveSFXAudioSource: []
-  deadZoneSFX: {fileID: 88883658}
-  deadZoneSFXAudioSource: []
   countDownSFX: {fileID: 2050178585}
   countDownSFXAudioSource: []
 --- !u!1 &1565245963
@@ -14855,7 +14890,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8f44b6650e48a4d4f881fb5f700be7e5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: efd45d644b6288a42b9cfaf73996d7c5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -15214,7 +15249,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d2466ceebfa293247924497d04ea62b6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0752f3dfcb043e34ba63a3a38bdec7e3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -16837,7 +16872,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7420f4e5c5a464194e7221d39df42e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseMenuUI: {fileID: 1838229564}
+  PauseMenuUI:
+  - {fileID: 0}
 --- !u!114 &1838229566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18304,7 +18340,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d67dfb41ba60f024b8a43aa2af549849, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 87ca06aecd478df4ebeb762480ea50fa, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -19934,7 +19970,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4701431c8f77bfa4d990adc7ebbaec8b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0b87cec2bc92fb74aa264fc1019d1f5d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

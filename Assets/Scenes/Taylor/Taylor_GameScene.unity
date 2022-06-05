@@ -4968,7 +4968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &523383050
 Transform:
   m_ObjectHideFlags: 0
@@ -7563,12 +7563,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd43c343b5d66f4180cfffdf3d34692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highScoreText: {fileID: 1457480697}
   scoreText: {fileID: 1833241691}
-  scoreRetainer: {fileID: 0}
   healthText: {fileID: 188623706}
   scoreMultiplierText: {fileID: 41065390}
-  food: 3
+  health: 3
+  maxhealth: 0
+  pauseMenuScoreText: {fileID: 0}
+  highestScore: {fileID: 0}
+  gameOverScore: {fileID: 0}
+  highestScoreText: {fileID: 0}
+  gameOverScoreText: {fileID: 0}
+  currentScore: 0
 --- !u!4 &874219064
 Transform:
   m_ObjectHideFlags: 0
@@ -7596,17 +7601,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObstacles: []
-  obstacleToPool: {fileID: 7846588578178877965, guid: df1c722440a451b49bbfbbf1121473cb, type: 3}
   obstaclePoolSize: 5
+  timeUntilObstacle: 0
+  obstacleTime: 0
   pooledRewards: []
-  rewardToPool: {fileID: 559604091710244825, guid: 35772a96eba505f4b8ca0cf85f028ca2, type: 3}
   rewardPoolSize: 2
+  timeUntilReward: 0
+  rewardTime: 0
   pooledBigRewards: []
-  bigRewardToPool: {fileID: 5015909101549938736, guid: 2bac02003ae7a214aad450642cec3a5d, type: 3}
   bigRewardPoolSize: 2
+  timeUntilBigReward: 0
+  bigRewardTime: 0
   pooledProjectiles: []
-  projectileToPool: {fileID: 7120897130159154521, guid: 53433f4c6e1ef884faa80c333e207698, type: 3}
   projectilePoolSize: 10
+  timeUntilProjectile: 0
+  projectileTime: 0
 --- !u!114 &874219066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7619,6 +7628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c192fc2c66a55047ab2286b0ab1359f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameStartedAmount: 0
 --- !u!1 &878235546
 GameObject:
   m_ObjectHideFlags: 0
@@ -8167,6 +8177,11 @@ MonoBehaviour:
   sFXSlider: {fileID: 1625818686}
   musicSlider: {fileID: 1080434568}
   musicAudio: {fileID: 1922839366}
+  mutedSFX: {fileID: 0}
+  notMutedSFX: {fileID: 0}
+  mutedMusic: {fileID: 0}
+  notMutedMusic: {fileID: 0}
+  singleDeadZoneSFX: {fileID: 0}
   rewardSFX: {fileID: 358080047}
   rewardSFXAudioSource: []
   buttonSFX: {fileID: 1597138104}
@@ -8177,8 +8192,6 @@ MonoBehaviour:
   obstacleSpawnSFXAudioSource: []
   playerMoveSFX: {fileID: 178148021}
   playerMoveSFXAudioSource: []
-  deadZoneSFX: {fileID: 1611005694}
-  deadZoneSFXAudioSource: []
   countDownSFX: {fileID: 1535584413}
   countDownSFXAudioSource: []
 --- !u!1 &916744719
@@ -8906,12 +8919,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd43c343b5d66f4180cfffdf3d34692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highScoreText: {fileID: 1457480697}
   scoreText: {fileID: 249866435}
-  scoreRetainer: {fileID: 1833241691}
   healthText: {fileID: 0}
   scoreMultiplierText: {fileID: 0}
-  food: 0
+  health: 3
+  maxhealth: 0
+  pauseMenuScoreText: {fileID: 0}
+  highestScore: {fileID: 0}
+  gameOverScore: {fileID: 0}
+  highestScoreText: {fileID: 0}
+  gameOverScoreText: {fileID: 0}
+  currentScore: 0
 --- !u!1 &1027533671
 GameObject:
   m_ObjectHideFlags: 0
@@ -10315,7 +10333,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 3.5, y: 1.5}
-    newSize: {x: 0.16, y: 0.16}
+    newSize: {x: 3.5, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -10423,7 +10441,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 3.5, y: 1.5}
-    newSize: {x: 0.16, y: 0.16}
+    newSize: {x: 3.5, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -10536,7 +10554,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 3.5, y: 1.5}
-    newSize: {x: 0.16, y: 0.16}
+    newSize: {x: 3.5, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -10654,17 +10672,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c35b21597260564d824b6feb280f950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {fileID: 874219063}
-  playOnTrigger: {fileID: 0}
   lanes:
   - -1.5
   - 0
   - 1.5
-  GameOverScene: {fileID: 1026974635}
-  UIHealth: {fileID: 188623704}
-  UIScore: {fileID: 1833241689}
-  UIScoreMultiplyer: {fileID: 41065388}
-  PauseButtonUI: {fileID: 748105992}
   colliders:
   - {fileID: 1150546331}
   - {fileID: 1150546325}
@@ -10731,12 +10742,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 50461e502a130b24886f5eaa76ed44c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c3fd3565e76fdef4fbeb423c59e88327, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 3.5, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -10774,7 +10785,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 3.5, y: 1.5}
-    newSize: {x: 0.16, y: 0.16}
+    newSize: {x: 3.5, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -12668,7 +12679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1388403501
 Transform:
   m_ObjectHideFlags: 0
@@ -12698,13 +12709,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2731b639b97da3742b0bf633125244f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstPlayScenerio: 0
+  gameIsPaused: 0
+  buildVersion: 
+  buildNumberText: []
+  sceneEssentials: []
   backGroundTheme:
   - {fileID: 132313771}
   - {fileID: 1512507984}
+  UIVersions: []
   themesMenu:
   - {fileID: 38719608}
   - {fileID: 781577823}
-  objectTheme: []
+  themeSounds: []
+  mainMenu: []
+  PauseMenu: []
+  themePausedUI1: []
+  themePausedUI2: []
+  themePausedUI3: []
+  GameOverUIS: []
+  theme1Obj: []
+  theme2Obj: []
+  playerThemes: []
 --- !u!1 &1402126755
 GameObject:
   m_ObjectHideFlags: 0
@@ -13102,7 +13128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1419895045
 Transform:
   m_ObjectHideFlags: 0
@@ -14487,12 +14513,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd43c343b5d66f4180cfffdf3d34692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highScoreText: {fileID: 1457480697}
   scoreText: {fileID: 249866435}
-  scoreRetainer: {fileID: 1833241691}
   healthText: {fileID: 0}
   scoreMultiplierText: {fileID: 0}
-  food: 0
+  health: 3
+  maxhealth: 0
+  pauseMenuScoreText: {fileID: 0}
+  highestScore: {fileID: 0}
+  gameOverScore: {fileID: 0}
+  highestScoreText: {fileID: 0}
+  gameOverScoreText: {fileID: 0}
+  currentScore: 0
 --- !u!1 &1564749251
 GameObject:
   m_ObjectHideFlags: 0
@@ -14540,6 +14571,11 @@ MonoBehaviour:
   sFXSlider: {fileID: 1917250490}
   musicSlider: {fileID: 1071602663}
   musicAudio: {fileID: 1277159083}
+  mutedSFX: {fileID: 0}
+  notMutedSFX: {fileID: 0}
+  mutedMusic: {fileID: 0}
+  notMutedMusic: {fileID: 0}
+  singleDeadZoneSFX: {fileID: 0}
   rewardSFX: {fileID: 173160484}
   rewardSFXAudioSource: []
   buttonSFX: {fileID: 1330266133}
@@ -14550,8 +14586,6 @@ MonoBehaviour:
   obstacleSpawnSFXAudioSource: []
   playerMoveSFX: {fileID: 1673202284}
   playerMoveSFXAudioSource: []
-  deadZoneSFX: {fileID: 88883658}
-  deadZoneSFXAudioSource: []
   countDownSFX: {fileID: 2050178585}
   countDownSFXAudioSource: []
 --- !u!1 &1565245963

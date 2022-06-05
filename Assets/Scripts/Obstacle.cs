@@ -38,6 +38,15 @@ public class Obstacle : MonoBehaviour
         {
             gameObject.SetActive(false);             
         }
+
+
+        if(GameController.me.invincibility == true || GameController.me.maxHealth == true)
+        {
+            if (collider.gameObject.tag == "Player")
+            {
+                gameObject.SetActive(false);             
+            }
+        }
     }
 
     //Collision Animation Marker

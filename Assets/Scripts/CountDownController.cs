@@ -6,40 +6,32 @@ using TMPro;
 
 public class CountDownController : MonoBehaviour
 {
-    public static CountDownController instance;
-
-    public int countDownTime;
-    public Text countDownDisplay;
-    public GameObject hud;
-
-    //public TextMeshProUGUI countDownDisplay;
+    float currentTime = 0f;
+    public float startingTime = 2.5f;
+    int flag = 0;
+    
+    public GameObject continueButtonBG,continueButton;
     
     public void Start()
     {
-        Debug.Log("Start Coroutine");
-        StartCoroutine(CountDownToStart());
-        Debug.Log("End Coroutine");
+        currentTime = startingTime;
+        AudioManager.me.playCountDownSFX();
     }
 
-    public IEnumerator CountDownToStart()
+    public void Update()
     {
-        while(countDownTime > 0)
+       //Debug.Log("Current Time is:" + currentTime);
+
+        if(currentTime > 0 && flag == 0)
         {
-            countDownDisplay.text = countDownTime.ToString();
-
-            yield return new WaitForSeconds(1f);
-
-            countDownTime--;
+            currentTime -= 1 * Time.deltaTime;
         }
 
-        countDownDisplay.text = "GO!";
-
-        //GameController.instance.StartGame();
-
-        yield return new WaitForSeconds(1f);
-
-        countDownDisplay.gameObject.SetActive(false);
-        hud.gameObject.SetActive(false);
-        //Player.playerinstance.SetActive(true);
+        if (currentTime <= 0 && flag == 0)
+        {
+            continueButtonBG.SetActive(true);
+            continueButton.SetActive(true);
+            flag = 1;
+        }
     }
 }
