@@ -184,8 +184,6 @@ public class Player : MonoBehaviour
             isSwappingLanes = false;
         }
     
-        if(GameController.me.cheatsAreEnabled == false)
-        {
         // No lives remaining
             if (ScoreController.me.GetCurrentHealth() < 0 || ScoreController.me.GetCurrentHealth() == 0)
             {
@@ -211,7 +209,6 @@ public class Player : MonoBehaviour
                     Debug.Log("Health was 0");
                 }
             }
-        }
 
 
 

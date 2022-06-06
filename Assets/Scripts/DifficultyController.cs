@@ -330,7 +330,7 @@ public class DifficultyController : MonoBehaviour
             SetMaxPoolSizes(7,5,3,10);
         
             //Set max scores for level checking
-            SetMaxLevelScores(20,40,60,80,100,120);
+            SetMaxLevelScores(20,40,80,160,320,640);
 
             difficultyState = 0;
         }
